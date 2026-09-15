@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <list string="Real Estate Property Tag" default_order="name desc">
                     <field name="name" />
-                    <field name="color" />
+                    <field name="color" widget="color_picker" />
                     <field name="active" />
                 </list>
             </field>
