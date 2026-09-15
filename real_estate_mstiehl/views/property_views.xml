@@ -33,7 +33,7 @@
                                 <field name="name"/>
                             </h1>
                         </div>
-                        <group>
+                        <group col="3">
                             <field name="published"/>
                             <field name="available" readonly="1" />
                             <field name="active"/>
