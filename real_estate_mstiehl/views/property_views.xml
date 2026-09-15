@@ -10,10 +10,12 @@
             <field name="arch" type="xml">
                 <list string="Real Estate Properties" default_order="date_register desc">
                     <field name="name" />
-                    <field name="price" />
                     <field name="property_type_id" />
-                    <field name="bedrooms" />
-                    <field name="bathrooms" />
+                    <field name="agent_id" />
+                    <field name="seller_id" />
+                    <field name="total_area" />
+                    <field name="available" />
+                    <field name="published" />
                     <field name="active" />
                 </list>
             </field>
@@ -28,7 +30,7 @@
                         <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}' readonly="1"/>
                         <div class="oe_title">
                             <h1>
-                                <field name="name" readonly="1"/>
+                                <field name="name"/>
                             </h1>
                         </div>
                         <group>
