@@ -30,18 +30,6 @@
         </field>
     </record>
 
-    <!-- View realestate.domain search -->
-    <record id="view_realestate_domains_search" model="ir.ui.view">
-        <field name="name">view.realestate.domain.search</field>
-        <field name="model">realestate.domain</field>
-        <field name="arch" type="xml">
-            <search>
-                <group expand="1" string="Group By">
-                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
 
     <!-- Action realestate.domain -->
     <record id="action_realestate_domains" model="ir.actions.act_window">
@@ -85,19 +73,6 @@
                     </div>
                 </sheet>
             </form>
-        </field>
-    </record>
-
-    <!-- View realestate.domain.type search -->
-    <record id="view_realestate_domain_type_search" model="ir.ui.view">
-        <field name="name">view.realestate.domain.type.search</field>
-        <field name="model">realestate.domain.type</field>
-        <field name="arch" type="xml">
-            <search>
-                <group expand="1" string="Group By">
-                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
-                </group>
-            </search>
         </field>
     </record>
 
