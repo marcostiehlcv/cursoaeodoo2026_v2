@@ -34,9 +34,9 @@
                             </h1>
                         </div>
                         <group>
-                            <group><field name="published"/></group>
-                            <group><field name="available" readonly="1" /></group>
-                            <group><field name="active"/></group>
+                            <field name="published"/>
+                            <field name="available" readonly="1" />
+                            <field name="active"/>
                         </group>
                         <group>
                             <group>
