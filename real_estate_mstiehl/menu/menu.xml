@@ -3,8 +3,8 @@
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
         <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_root" sequence="20"/>
         <menuitem id="estate_menu_properties_offers" action="estate_property_offer_view_action" name="Offers" parent="estate_menu_root" sequence="30"/>
-        <menuitem name="Settings" id="menu_administration" parent="estate_menu_root" sequence="100"/>
-        <menuitem id="estate_menu_property_type" action="estate_property_type_view_action" name="Domains" parent="menu_administration" sequence="110"/>
-        <menuitem id="estate_menu_property_tag" action="estate_property_tag_view_action" name="Domain Types" parent="menu_administration" sequence="120"/>
+        <menuitem name="Settings" id="estate_menu_settings" parent="estate_menu_root" sequence="100"/>
+        <menuitem id="estate_menu_property_type" action="estate_property_type_view_action" name="Property Types" parent="estate_menu_settings" sequence="110"/>
+        <menuitem id="estate_menu_property_tag" action="estate_property_tag_view_action" name="Property Tags" parent="estate_menu_settings" sequence="120"/>
     </data>
 </odoo>
