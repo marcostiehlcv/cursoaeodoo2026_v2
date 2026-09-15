@@ -1,9 +1,10 @@
 <odoo>
     <data>
-        <menuitem id="menu_real_estate_root" name="Real Estate" sequence="10"/>
-        <menuitem id="menu_real_estate_properties" action="action_realestate_property" name="Properties" parent="menu_real_estate_root" sequence="20"/>
-        <menuitem name="Settings" id="menu_administration" parent="menu_real_estate_root" sequence="50"/>
-        <menuitem id="menu_real_estate_domains" action="action_realestate_domains" name="Domains" parent="menu_administration" sequence="60"/>
-        <menuitem id="menu_real_estate_domain_types" action="action_realestate_domain_type" name="Domain Types" parent="menu_administration" sequence="70"/>
+        <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
+        <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_root" sequence="20"/>
+        <menuitem id="estate_menu_properties_offers" action="estate_property_offer_view_action" name="Offers" parent="estate_menu_root" sequence="30"/>
+        <menuitem name="Settings" id="menu_administration" parent="estate_menu_root" sequence="100"/>
+        <menuitem id="estate_menu_property_type" action="estate_property_type_view_action" name="Domains" parent="menu_administration" sequence="110"/>
+        <menuitem id="estate_menu_property_tag" action="estate_property_tag_view_action" name="Domain Types" parent="menu_administration" sequence="120"/>
     </data>
 </odoo>

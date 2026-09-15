@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_realestate_property_manager,realestate_property_manager,model_realestate_property,base.group_user,1,1,1,1
-access_realestate_domain_type_manager,realestate_domain_type_manager,model_realestate_domain_type,base.group_user,1,1,1,1
-access_realestate_domain_manager,realestate_domain_manager,model_realestate_domain,base.group_user,1,1,1,1
+access_estate_property_manager,estate_property_manager,model_estate_property,base.group_user,1,1,1,1
+access_estate_property_type_manager,estate_property_type_manager,model_estate_property_type,,1,1,1,1
+access_estate_property_offer_manager,estate_property_offer_manager,model_estate_property_offer,,1,1,1,1
+access_estate_property_tag_manager,estate_property_tag_manager,model_estate_property_tag,,1,1,1,1
