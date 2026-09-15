@@ -42,7 +42,6 @@
                             <group>
                                 <field name="seller_id"/>
                                 <field name="agent_id" />
-                                <field name="ticket_id"/>
                             </group>
                             <group>
                                 <field name="country_id"/>
