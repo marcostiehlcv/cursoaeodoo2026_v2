@@ -19,7 +19,7 @@ class EstateProperty(models.Model):
     postcode = fields.Char(string="Postcode", tracking=True)
     address = fields.Char(string="Address", tracking=True)
     country_id = fields.Many2one(comodel_name="res.country", string="Country", default=1, tracking=True)
-    city_id = fields.Many2one(comodel_name="res.city", string="City", tracking=True)
+    # city_id = fields.Many2one(comodel_name="res.city", string="City", tracking=True)
     
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     selling_price = fields.Float(string="Selling Price", default=0.0, readonly=True, tracking=True)
