@@ -6,7 +6,7 @@
     'author': 'Marco Stiehl',
     'website': '',
     'license': 'LGPL-3',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     "data": [
         "security/ir.model.access.csv",
         "views/property_views.xml",
