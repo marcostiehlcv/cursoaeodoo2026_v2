@@ -7,9 +7,10 @@
     'website': '',
     'license': 'LGPL-3',
     'depends': ['base'],
-    'data': [
+    "data": [
         "security/ir.model.access.csv",
-        "views/property.xml",
+        "views/property_views.xml",
+        "views/domain_views.xml",
         "menu/menu.xml"
     ],
     'installable': True,
