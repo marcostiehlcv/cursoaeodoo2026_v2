@@ -6,7 +6,7 @@ class RealEstateProperty(models.Model):
     
     name = fields.Char(string="Name", required=True)
     description = fields.Text(string="Description")
-    image = fields.Binary(string="Image")
+    image_1920 = fields.Image("Image", max_width=1920, max_height=1920)
     price = fields.Float(string="Price", default=0.0)
     bedrooms = fields.Integer(string="Bedrooms", default=0)
     bathrooms = fields.Integer(string="Bathrooms", default=0)
