@@ -83,6 +83,12 @@
                                         <field name="partner_id" widget="many2one_avatar" />
                                         <field name="price" />                                        
                                     </list>
+                                    <form>
+                                        <group>
+                                            <field name="partner_id" widget="many2one_avatar" />
+                                            <field name="price" />  
+                                        </group>
+                                    </form>
                                 </field>
                             </page>
                             <page name="contacts_ids" string="Contacts">

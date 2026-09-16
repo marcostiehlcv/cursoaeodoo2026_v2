@@ -72,8 +72,8 @@ class EstatePropertyTag(models.Model):
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Estate Property Offer"
+    _rec_name = "property_id"
     
-    name = fields.Char(string="Name", required=True)
     property_id = fields.Many2one(comodel_name="estate.property", string="Property")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Partner")
     price = fields.Float(string="Price", default=0.0)
