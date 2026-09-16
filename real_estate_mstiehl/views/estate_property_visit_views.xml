@@ -23,6 +23,9 @@
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
                 <form string="Real Estate Property Visit">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
                     <sheet>
                         <group>
                             <field name="listing_id" />
