@@ -9,7 +9,7 @@ class EstateProperty(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     
     name = fields.Char(string="Name", required=True, tracking=True)
-    property_ref_code = fields.Char(string="Property Reference Code", store="True" tracking=True, calculate="_compute_property_ref_code", readonly=True)    
+    property_ref_code = fields.Char(string="Property Reference Code", store=True, tracking=True, calculate="_compute_property_ref_code", readonly=True)    
     description = fields.Text(string="Description", tracking=True)
     image_1920 = fields.Image("Primary Image", max_width=1920, max_height=1920)
     cunstruction_year = fields.Integer(string="Construction Year", tracking=True)
