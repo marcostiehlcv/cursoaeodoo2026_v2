@@ -27,4 +27,8 @@ access_estate_listing_type_manager,estate_listing_type_manager,model_estate_list
 
 access_estate_listing_manager,estate_listing_manager,model_estate_listing,,1,1,1,1
 
+access_estate_property_visit_manager,estate_property_visit_manager,model_estate_property_visit,,1,1,1,1
+
+
+
 

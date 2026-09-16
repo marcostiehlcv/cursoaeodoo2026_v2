@@ -3,6 +3,7 @@
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
         <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_root" sequence="20"/>
         <menuitem id="estate_menu_listing" action="estate_listing_view_action" name="Listings" parent="estate_menu_root" sequence="30"/>
+        <menuitem id="estate_menu_visits" action="estate_visit_view_action" name="Visits" parent="estate_menu_root" sequence="40"/>
         <!-- Settings -->
         <menuitem id="estate_menu_settings" name="Settings" parent="estate_menu_root" sequence="100"/>
         <menuitem id="estate_menu_property_type" action="estate_property_type_view_action" name="Property Types" parent="estate_menu_settings" sequence="110"/>
