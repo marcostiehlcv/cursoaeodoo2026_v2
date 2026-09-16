@@ -56,9 +56,11 @@
                     <notebook>
                         <page name="Offers" string="Offers">
                             <field name="offer_ids" >
-                                <field name="partner_id"  widget="many2many_avatar_user"/>
-                                <field name="price" />
-                                <field name="state" />
+                                <list>
+                                    <field name="partner_id"  widget="many2many_avatar_user"/>
+                                    <field name="price" />
+                                    <field name="state" />
+                                </list>
                             </field>
                         </page>
                     </notebook>
