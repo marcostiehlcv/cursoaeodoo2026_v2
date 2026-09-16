@@ -49,6 +49,8 @@ class EstateProperty(models.Model):
     
     active = fields.Boolean(string="Active", default=True, tracking=True)
     available = fields.Boolean(string="Available", default=True, tracking=True)
+    
+    user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
                 
     @api.model_create_multi
     def create(self, vals_list):

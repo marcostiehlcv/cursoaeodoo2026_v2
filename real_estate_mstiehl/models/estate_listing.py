@@ -14,22 +14,23 @@ class EstateListing(models.Model):
     type_id = fields.Many2one(comodel_name="estate.listing.type", string="Type")
     description = fields.Text(string="Description", tracking=True)
     seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
-    agent_id = fields.Many2one(comodel_name="res.partner", string="Agent", tracking=True)
+    agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     selling_price = fields.Float(string="Selling Price", default=0.0, readonly=True, tracking=True)
     state = fields.Selection(selection=[('draft', 'Draft'), ('published', 'Published'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('reserved', 'Reserved'), ('sold', 'Sold'), ('canceled', 'Canceled')], string="State", default="draft")
     date_register = fields.Date(string="Date Register", default=fields.Date.today())
-    date_published = fields.Date(string="Date Published")
-    date_offer_received = fields.Date(string="Date Offer Received")
-    date_offer_accepted = fields.Date(string="Date Offer Accepted")
-    date_reserved = fields.Date(string="Date Reserved")
-    date_sold = fields.Date(string="Date Sold")
-    date_canceled = fields.Date(string="Date Canceled")
+    date_published = fields.Date(string="Date Published", readonly=True)
+    date_offer_received = fields.Date(string="Date Offer Received", readonly=True)
+    date_offer_accepted = fields.Date(string="Date Offer Accepted", readonly=True)
+    date_reserved = fields.Date(string="Date Reserved", readonly=True)
+    date_sold = fields.Date(string="Date Sold", readonly=True)
+    date_canceled = fields.Date(string="Date Canceled", readonly=True)
     external_url = fields.Char(string="External URL")
     active = fields.Boolean(string="Active", default=True)
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     offer_ids = fields.One2many(comodel_name="estate.listing.offer", inverse_name="listing_id", string="Offers")
 
+    user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
     @api.model_create_multi
     def create(self, vals_list):
@@ -64,6 +65,8 @@ class EstateListingOffer(models.Model):
     date_accepted = fields.Date(string="Date Accepted")
     date_refused = fields.Date(string="Date Refused")
     date_expired = fields.Date(string="Date Expired")
+    
+    user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
     def action_in_analysis(self):
         for record in self:

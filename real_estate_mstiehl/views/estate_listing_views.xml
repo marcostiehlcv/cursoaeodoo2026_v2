@@ -26,10 +26,12 @@
         <field name="arch" type="xml">
             <form string="Estate Listing">
                 <header>
-                    <!-- <button string="Analyse" name="action_in_analysis" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
-                    <button string="Accept" name="action_accepted" type="object" class="oe_highlight btn-success" invisible="state != 'in_analysis'"/>
-                    <button string="Refuse" name="action_refused" type="object" class="oe_highlight btn-danger" invisible="state != 'in_analysis'"/> -->
-                    <field name="state" widget="statusbar"/>
+                    <!-- <button string="Publish" name="action_publish" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
+                    <button string="Unpublish" name="action_draft" type="object" class="oe_highlight" invisible="state != 'in_analysis'"/>
+                    <button string="Accept Offer" name="action_accept" type="object" class="oe_highlight btn-success" invisible="state != 'in_analysis'"/>
+                    <button string="Reject Offer" name="action_accept" type="object" class="oe_highlight btn-danger" invisible="state != 'in_analysis'"/>
+                    <button string="Reserved" name="action_reserved" type="object" class="oe_highlight" invisible="state != 'in_analysis'"/>
+                    <field name="state" widget="statusbar"/> -->
                 </header>
                 <sheet>
                     <div class="oe_title">
