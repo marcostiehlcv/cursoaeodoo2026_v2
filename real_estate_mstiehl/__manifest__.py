@@ -12,7 +12,7 @@
         "views/estate_listing_views.xml",
         "views/estate_listing_type_views.xml",
         "views/property_offer_views.xml",
-        "views/property_tag_views.xml",
+        "views/estate_tag_views.xml",
         "views/property_type_views.xml",
         "views/property_views.xml",
         "menu/menu.xml"
