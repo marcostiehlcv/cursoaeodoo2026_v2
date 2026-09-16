@@ -36,6 +36,7 @@ class EstateProperty(models.Model):
     external_url = fields.Char(string="External URL")
     
     property_type_id = fields.Many2one(comodel_name="estate.property.type", string="Property Type", tracking=True)
+    property_category_id = fields.Many2one(comodel_name="estate.property.category", string="Property Category", tracking=True)
     
     date_register = fields.Date(string="Date Register", default=fields.Date.today())
     date_sold = fields.Date(string="Date Sold", readonly=True)
@@ -103,3 +104,12 @@ class EstatePropertyContactsRole(models.Model):
     _description = "Estate Property Contacts Role"
     
     name = fields.Char(string="Name", required=True)
+
+
+class EstatePropertyCategory(models.Model):
+    _name = "estate.property.category"
+    _description = "Estate Property Category"
+    
+    name = fields.Char(string="Name", required=True)
+    code = fields.Char(string="Code", required=True)
+    active = fields.Boolean(string="Active", default=True)
