@@ -64,7 +64,7 @@ class EstateProperty(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["property_ref_code"] = f"COD#{((datetime.today().year, datetime.today().month, datetime.today().day))}"            
+        vals_list[0]["property_ref_code"] = f"COD#{(datetime.today()).strftime('%Y%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
     
 class EstatePropertyType(models.Model):
