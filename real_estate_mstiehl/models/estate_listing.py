@@ -35,7 +35,7 @@ class EstateListing(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["listing_ref_code"] = f"LIST#{(datetime.today()).strftime('%yy%m%d%H%M%S')}"            
+        vals_list[0]["listing_ref_code"] = f"LIST#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
         return super(EstateListing, self).create(vals_list)
     
 
