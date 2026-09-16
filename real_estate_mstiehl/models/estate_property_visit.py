@@ -6,6 +6,7 @@ class EstateVisit(models.Model):
     _name = "estate.property.visit"
     _description = "Estate Property Visit"
     
+    name = fields.Char(string="Name", required=True, default=lambda self: f"Visit-{(datetime.today()).strftime('%y%m%d%H%M%S')}")
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing")
     property_id = fields.Many2one(comodel_name="estate.property",string="Property",related="listing_id.property_id",store=True,readonly=True)
     visitor_id = fields.Many2one(comodel_name="res.partner", string="Visitor")
