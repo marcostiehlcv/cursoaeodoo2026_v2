@@ -9,7 +9,7 @@ class EstateProperty(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     
     name = fields.Char(string="Name", required=True, tracking=True)
-    property_ref_code = fields.Char(string="Property Reference Code", store=True, tracking=True, calculate="_compute_property_ref_code", readonly=True)    
+    property_ref_code = fields.Char(string="Property Code", store=True, tracking=True, calculate="_compute_property_ref_code", readonly=True)    
     description = fields.Text(string="Description", tracking=True)
     image_1920 = fields.Image("Primary Image", max_width=1920, max_height=1920)
     cunstruction_year = fields.Integer(string="Construction Year", tracking=True)
@@ -58,13 +58,11 @@ class EstateProperty(models.Model):
     def _compute_number_offers(self):
         for record in self:
             record.number_offers = len(record.offers_ids)
-            
-    
-    # add value to property_ref_code
+                
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["property_ref_code"] = f"COD#{(datetime.today()).strftime('%Y%m%d%H%M%S')}"            
+        vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%Y%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
     
 class EstatePropertyType(models.Model):
