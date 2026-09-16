@@ -5,12 +5,11 @@
         <!-- ###### Properties -->
 
         <record id="estate_property_offer_view_list" model="ir.ui.view">
-            <field name="name">estate.property.offer.list</field>
+            <field name="name">estate.property.offer.view.list</field>
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
                 <list string="Offers" default_order="create_date desc">
-                    <field name="name" />
-                    <field name="property_id" />
+                    <field name="property_id" widget="many2one_avatar" />
                     <field name="partner_id" />
                     <field name="price" />
                     <field name="active" />
@@ -24,9 +23,8 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
                     <sheet>
-                        <field name="name" />
                         <field name="property_id" />
-                        <field name="partner_id" />
+                        <field name="partner_id" widget="many2one_avatar" />
                         <field name="price" />
                         <field name="active" />
                     </sheet>
