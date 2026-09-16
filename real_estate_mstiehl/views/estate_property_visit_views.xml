@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property Visit">
                 <header>
-                    <field name="state" widget="statusbar"/>
+                    <field name="state" widget="statusbar" option="{'clickable': true}" />
                 </header>
                     <sheet>
                         <group>
