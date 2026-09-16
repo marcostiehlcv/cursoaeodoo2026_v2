@@ -9,9 +9,9 @@
             <field name="arch" type="xml">
                 <list string="Real Estate Property Visit" default_order="name desc">
                     <field name="listing_id" />
-                    <field name="listing_id.property_id" />
-                    <field name="visitor_id" />
-                    <field name="agent_id" />
+                    <field name="property_id" />
+                    <field name="visitor_id" widget="many2one_avatar_user"/>
+                    <field name="agent_id" widget="many2one_avatar_user" />
                     <field name="date" />
                     <field name="state" widget="badge" />
                 </list>
@@ -26,9 +26,9 @@
                     <sheet>
                         <group>
                             <field name="listing_id" />
-                            <field name="listing_id.property_id" read_only="1"/>
-                            <field name="visitor_id" />
-                            <field name="agent_id" />
+                            <field name="property_id"/>
+                            <field name="visitor_id" widget="many2one_avatar_user" />
+                            <field name="agent_id" widget="many2one_avatar_user" />
                             <field name="date" />
                         </group>
                     </sheet>
