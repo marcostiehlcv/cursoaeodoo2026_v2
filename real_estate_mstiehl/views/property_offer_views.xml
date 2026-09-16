@@ -24,8 +24,8 @@
                 <form string="Real Estate Property">
                     <header>
                         <button string="Analyse" name="action_in_analysis" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
-                        <button string="Accept" name="action_in_analysis" type="object" class="oe_highlight btn-success" invisible="state != 'in_analysis'"/>
-                        <button string="Refuse" name="action_in_analysis" type="object" class="oe_highlight btn-danger" invisible="state != 'in_analysis'"/>
+                        <button string="Accept" name="action_accepted" type="object" class="oe_highlight btn-success" invisible="state != 'in_analysis'"/>
+                        <button string="Refuse" name="action_refused" type="object" class="oe_highlight btn-danger" invisible="state != 'in_analysis'"/>
                         <field name="state" widget="statusbar" statusbar_visible="submitted,in_analysis,accepted,refused,expired"/>
                     </header>
                     <sheet>
