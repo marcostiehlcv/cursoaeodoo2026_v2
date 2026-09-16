@@ -8,6 +8,7 @@
     'license': 'LGPL-3',
     'depends': ['base', 'mail'],
     "data": [
+        "security/real_estate_security.xml",
         "security/ir.model.access.csv",
         "views/estate_listing_views.xml",
         "views/estate_listing_type_views.xml",
