@@ -7,10 +7,12 @@
             <field name="name">estate.property.visit.view.list</field>
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
-                <list string="Real Estate Property property_visit" default_order="name desc">
-                    <field name="name" />
-                    <field name="color" widget="color_picker" />
-                    <field name="active" />
+                <list string="Real Estate Property Visit" default_order="name desc">
+                    <field name="property_id" />
+                    <field name="visitor_id" />
+                    <field name="agent_id" />
+                    <field name="date" />
+                    <field name="state" widget="badge" />
                 </list>
             </field>
         </record>
@@ -19,12 +21,13 @@
             <field name="name">estate.property.visit.view.form</field>
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
-                <form string="Real Estate Property property_visit">
+                <form string="Real Estate Property Visit">
                     <sheet>
                         <group>
-                            <field name="name" />
-                            <field name="color" widget="color_picker" />
-                            <field name="active" />
+                            <field name="property_id" />
+                            <field name="visitor_id" />
+                            <field name="agent_id" />
+                            <field name="date" />
                         </group>
                     </sheet>
                 </form>
