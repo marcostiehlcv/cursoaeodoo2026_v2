@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from datetime import datetime
 from datetime import timedelta
+from .res_country import ResCountry, ResCountryState
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -23,7 +24,16 @@ class EstateProperty(models.Model):
     address = fields.Char(string="Address", tracking=True)
     country_id = fields.Many2one(comodel_name="res.country", string="Country", default=1, tracking=True)
     # city_id = fields.Many2one(comodel_name="res.city", string="City", tracking=True)
-    
+    # address fields
+    street = fields.Char()
+    street2 = fields.Char()
+    zip = fields.Char(change_default=True)
+    city = fields.Char()
+    state_id: ResCountryState = fields.Many2one("res.country.state", string='State', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
+    country_id: ResCountry = fields.Many2one('res.country', string='Country', ondelete='restrict')
+    country_code = fields.Char(related='country_id.code', string="Country Code")
+    partner_latitude = fields.Float(string='Geo Latitude', digits=(10, 7))
+    partner_longitude = fields.Float(string='Geo Longitude', digits=(10, 7))
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     selling_price = fields.Float(string="Selling Price", default=0.0, readonly=True, tracking=True)
     
