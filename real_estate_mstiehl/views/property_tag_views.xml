@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- ###### Property tag -->  
+        <!-- ###### Tag -->  
 
-        <record id="estate_property_tag_view_list" model="ir.ui.view">
-            <field name="name">estate.property.tag.view.list</field>
+        <record id="estate_tag_view_list" model="ir.ui.view">
+            <field name="name">estate.tag.view.list</field>
             <field name="model">estate.property.tag</field>
             <field name="arch" type="xml">
                 <list string="Real Estate Property Tag" default_order="name desc">
@@ -15,9 +15,9 @@
             </field>
         </record>
 
-        <record id="estate_property_tag_view_form" model="ir.ui.view">
-            <field name="name">estate.property.tag.view.form</field>
-            <field name="model">estate.property.tag</field>
+        <record id="estate_tag_view_form" model="ir.ui.view">
+            <field name="name">estate.tag.view.form</field>
+            <field name="model">estate.tag</field>
             <field name="arch" type="xml">
                 <form string="Real Estate Property Tag">
                     <sheet>
@@ -33,9 +33,9 @@
 
 
         <!-- Action -->
-        <record id="estate_property_tag_view_action" model="ir.actions.act_window">
-            <field name="name">Property Tag</field>
-            <field name="res_model">estate.property.tag</field>
+        <record id="estate_tag_view_action" model="ir.actions.act_window">
+            <field name="name">Estate Tags</field>
+            <field name="res_model">estate.tag</field>
             <field name="view_mode">list,form</field>
         </record>
 

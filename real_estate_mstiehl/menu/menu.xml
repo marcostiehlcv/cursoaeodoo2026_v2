@@ -2,11 +2,11 @@
     <data>
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
         <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_root" sequence="20"/>
-        <menuitem id="estate_menu_properties_offers" action="estate_property_offer_view_action" name="Offers" parent="estate_menu_root" sequence="30"/>
+        <menuitem id="estate_menu_listing" action="estate_listing_view_action" name="Listings" parent="estate_menu_root" sequence="30"/>
         <!-- Settings -->
         <menuitem id="estate_menu_settings" name="Settings" parent="estate_menu_root" sequence="100"/>
         <menuitem id="estate_menu_property_type" action="estate_property_type_view_action" name="Property Types" parent="estate_menu_settings" sequence="110"/>
-        <menuitem id="estate_menu_property_category" action="estate_property_category_view_action" name="Property Categories" parent="estate_menu_settings" sequence="120"/>
-        <menuitem id="estate_menu_property_tag" action="estate_property_tag_view_action" name="Property Tags" parent="estate_menu_settings" sequence="130"/>
+        <menuitem id="estate_menu_property_category" action="estate_listing_type_view_action" name="Listing Type" parent="estate_menu_settings" sequence="120"/>
+        <menuitem id="estate_menu_tag" action="estate_tag_view_action" name="Tags" parent="estate_menu_settings" sequence="130"/>
     </data>
 </odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View estate.listing.type View List -->
+    <record id="view_estate_listing_type_list" model="ir.ui.view">
+        <field name="name">view.estate.listing.type.list</field>
+        <field name="model">estate.listing.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- View estate.listing.type form -->
+    <record id="view_estate_listing_type_form" model="ir.ui.view">
+        <field name="name">view.estate.listing.type.form</field>
+        <field name="model">estate.listing.type</field>
+        <field name="arch" type="xml">
+            <form string="Estate Listing Type">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action estate.listing.type -->
+    <record id="estate_listing_type_view_action" model="ir.actions.act_window">
+        <field name="name">Estate Listing Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">estate.listing.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Estate Listing Type.
+            </p>
+        </field>
+    </record>
+
+</odoo>

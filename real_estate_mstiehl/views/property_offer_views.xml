@@ -9,7 +9,7 @@
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
                 <list string="Offers" default_order="create_date desc">
-                    <field name="property_id" widget="many2one_avatar" />
+                    <field name="listing_id" widget="many2one_avatar" />
                     <field name="partner_id" />
                     <field name="price" />
                     <field name="state" />
@@ -30,7 +30,7 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="property_id" />
+                            <field name="listing_id" />
                             <field name="partner_id" widget="many2one_avatar" />
                             <field name="price" />
                         </group>
