@@ -13,7 +13,6 @@
                     <field name="partner_id" />
                     <field name="price" />
                     <field name="state" />
-                    <field name="active" />
                 </list>
             </field>
         </record>
@@ -24,14 +23,17 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
                     <header>
-                        <field name="state" widget="statusbar" statusbar_visible="pending,in_progress,accepted,refused,expired"/>
+                        <button string="Analyse" name="action_in_analysis" type="object" class="oe_highlight" invisible="state !='submitted'"/>
+                        <button string="Accept" name="action_in_analysis" type="object" class="oe_highlight" invisible="state =='in_analysis'"/>
+                        <button string="Refuse" name="action_in_analysis" type="object" class="oe_highlight" invisible="state =='in_analysis'"/>
+                        <button string="Analyse" name="action_in_analysis" type="object" class="oe_highlight" invisible="state !='submitted'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="submitted,in_analysis,accepted,refused,expired"/>
                     </header>
                     <sheet>
                         <group>
                             <field name="property_id" />
                             <field name="partner_id" widget="many2one_avatar" />
                             <field name="price" />
-                            <field name="active" />
                         </group>
                     </sheet>
                 </form>

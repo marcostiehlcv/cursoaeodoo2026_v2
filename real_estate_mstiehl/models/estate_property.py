@@ -95,12 +95,32 @@ class EstatePropertyOffer(models.Model):
     valid = fields.Boolean(string="Valid", default=True)
     valid_until = fields.Date(string="Date Valid", default=fields.Date.today() + timedelta(days=7))
     active = fields.Boolean(string="Active", default=True)
-    state = fields.Selection(selection=[('pending', 'Pending'), ('in_progress', 'In Progress'),('accepted', 'Accepted'), ('refused', 'Refused'), ('expired', 'Expired')], string="State", default="accepted")
+    state = fields.Selection(selection=[('submitted', 'Submitted'), ('in_analysis', 'In Analysis'),('accepted', 'Accepted'), ('refused', 'Refused'), ('expired', 'Expired')], string="State", default="submitted")
     date = fields.Date(string="Date", default=fields.Date.today())
-    date_in_progress = fields.Date(string="Date In Progress")
+    date_in_analysis = fields.Date(string="Date In Analysis")
     date_accepted = fields.Date(string="Date Accepted")
     date_refused = fields.Date(string="Date Refused")
     date_expired = fields.Date(string="Date Expired")
+    
+    def action_in_analysis(self):
+        for record in self:
+            record.state = "in_analysis"
+            record.date_in_analysis = fields.Date.today()
+            
+    def action_accepted(self):
+        for record in self:
+            record.state = "accepted"
+            record.date_accepted = fields.Date.today()
+    
+    def action_refused(self):
+        for record in self:
+            record.state = "refused"
+            record.date_refused = fields.Date.today()
+            
+    def action_expired(self):
+        for record in self:
+            record.state = "expired"
+            record.date_expired = fields.Date.today()
 
 class EstatePropertyGallery(models.Model):
     _name = "estate.property.gallery"
