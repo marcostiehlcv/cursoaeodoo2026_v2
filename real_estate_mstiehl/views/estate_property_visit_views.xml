@@ -8,7 +8,8 @@
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
                 <list string="Real Estate Property Visit" default_order="name desc">
-                    <field name="property_id" />
+                    <field name="listing_id" />
+                    <field name="listing_id.property_id" />
                     <field name="visitor_id" />
                     <field name="agent_id" />
                     <field name="date" />
@@ -24,7 +25,8 @@
                 <form string="Real Estate Property Visit">
                     <sheet>
                         <group>
-                            <field name="property_id" />
+                            <field name="listing_id" />
+                            <field name="listing_id.property_id" read_only="1"/>
                             <field name="visitor_id" />
                             <field name="agent_id" />
                             <field name="date" />
