@@ -39,7 +39,6 @@
                         <group col="2">
                             <group>
                                 <field name="property_type_id" />
-                                <field name="property_category_id" />
                             </group>
                             <group>
                                
