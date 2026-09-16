@@ -3,7 +3,7 @@
 	<data noupdate="1">
 
         <record id="module_category_real_estate" model="ir.module.category">
-            <field name="field_name">field_value</field>
+            <field name="name">Real Estate</field>
         </record>
 
         <record model="res.groups.privilege" id="res_groups_privilege_real_estate">
