@@ -50,7 +50,7 @@ class EstateListingType(models.Model):
 class EstateListingOffer(models.Model):
     _name = "estate.listing.offer"
     _description = "Estate Listing Offer"
-    _rec_name = "property_id"
+    _rec_name = "listing_id"
     
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Partner")
