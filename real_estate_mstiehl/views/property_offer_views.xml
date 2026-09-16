@@ -23,10 +23,12 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
                     <sheet>
-                        <field name="property_id" />
-                        <field name="partner_id" widget="many2one_avatar" />
-                        <field name="price" />
-                        <field name="active" />
+                        <group>
+                            <field name="property_id" />
+                            <field name="partner_id" widget="many2one_avatar" />
+                            <field name="price" />
+                            <field name="active" />
+                        </group>
                     </sheet>
                 </form>
             </field>

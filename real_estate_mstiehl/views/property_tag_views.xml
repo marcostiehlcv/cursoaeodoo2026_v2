@@ -21,9 +21,11 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property Tag">
                     <sheet>
-                        <field name="name" />
-                        <field name="color" widget="color_picker" />
-                        <field name="active" />
+                        <group>
+                            <field name="name" />
+                            <field name="color" widget="color_picker" />
+                            <field name="active" />
+                        </group>
                     </sheet>
                 </form>
             </field>
