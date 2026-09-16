@@ -86,8 +86,9 @@ class EstatePropertyGallery(models.Model):
     _description = "Estate Property Gallery"
     
     name = fields.Char(string="Name", required=True)
+    description = fields.Char(string="Description")
     property_id = fields.Many2one(comodel_name="estate.property", string="Property")
-    image_1920 = fields.Image("Image", max_width=1920, max_height=1920)
+    image = fields.Image("Image", max_width=1920, max_height=1920)
     
 
 class EstatePropertyContacts(models.Model):

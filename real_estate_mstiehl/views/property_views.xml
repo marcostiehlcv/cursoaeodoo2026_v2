@@ -74,6 +74,14 @@
                             <field name="date_register" />
                             <field name="active" />
                         </group>
+                        <notebook>
+                            <page name="gallery_ids" string="Gallery">
+                                <list>
+                                    <field name="name" />
+                                    <field name="description" />
+                                    <field name="image" widget="image" options="{'size': [50, 50]}"/>                                </list>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
