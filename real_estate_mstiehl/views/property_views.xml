@@ -41,7 +41,7 @@
                                 <field name="property_type_id" />
                             </group>
                             <group>
-                               
+                               <field name="user_id"/>
                             </group>
                         </group>
                         <group col="3">
