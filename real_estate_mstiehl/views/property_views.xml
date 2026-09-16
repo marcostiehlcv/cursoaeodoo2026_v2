@@ -14,6 +14,7 @@
                     <field name="agent_id" />
                     <field name="seller_id" />
                     <field name="total_area" />
+                    <field name="number_offers" />
                     <field name="available" />
                     <field name="published" />
                     <field name="active" />

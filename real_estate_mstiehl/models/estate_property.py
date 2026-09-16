@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -49,6 +49,13 @@ class EstateProperty(models.Model):
     active = fields.Boolean(string="Active", default=True, tracking=True)
     available = fields.Boolean(string="Available", default=True, tracking=True)
     published = fields.Boolean(string="Published", default=False, tracking=True)
+    
+    number_offers = fields.Integer(string="Number of Offers", compute="_compute_number_offers")
+    
+    @api.depends("offers_ids")
+    def _compute_number_offers(self):
+        for record in self:
+            record.number_offers = len(record.offers_ids)
     
     
 class EstatePropertyType(models.Model):
