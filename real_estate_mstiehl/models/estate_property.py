@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from datetime import datetime
+from datetime import timedelta
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -62,7 +63,7 @@ class EstateProperty(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%Y%m%d%H%M%S')}"            
+        vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%yy%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
     
 class EstatePropertyType(models.Model):
@@ -92,8 +93,14 @@ class EstatePropertyOffer(models.Model):
     partner_id = fields.Many2one(comodel_name="res.partner", string="Partner")
     price = fields.Float(string="Price", default=0.0)
     valid = fields.Boolean(string="Valid", default=True)
+    valid_until = fields.Date(string="Date Valid", default=fields.Date.today() + timedelta(days=7))
     active = fields.Boolean(string="Active", default=True)
-    
+    state = fields.Selection(selection=[('pending', 'Pending'), ('in_progress', 'In Progress'),('accepted', 'Accepted'), ('refused', 'Refused'), ('expired', 'Expired')], string="State", default="accepted")
+    date = fields.Date(string="Date", default=fields.Date.today())
+    date_in_progress = fields.Date(string="Date In Progress")
+    date_accepted = fields.Date(string="Date Accepted")
+    date_refused = fields.Date(string="Date Refused")
+    date_expired = fields.Date(string="Date Expired")
 
 class EstatePropertyGallery(models.Model):
     _name = "estate.property.gallery"

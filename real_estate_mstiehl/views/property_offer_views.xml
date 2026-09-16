@@ -12,6 +12,7 @@
                     <field name="property_id" widget="many2one_avatar" />
                     <field name="partner_id" />
                     <field name="price" />
+                    <field name="state" />
                     <field name="active" />
                 </list>
             </field>
@@ -22,6 +23,9 @@
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="pending,in_progress,accepted,refused,expired"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="property_id" />

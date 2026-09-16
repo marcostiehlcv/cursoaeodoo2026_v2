@@ -76,12 +76,14 @@
                                 <field name="offers_ids">
                                     <list>                                    
                                         <field name="partner_id" widget="many2one_avatar" />
-                                        <field name="price" />                                        
+                                        <field name="price" />
+                                        <field name="state" />
                                     </list>
                                     <form>
                                         <group>
                                             <field name="partner_id" widget="many2one_avatar" />
                                             <field name="price" />  
+                                            <field name="state" />
                                         </group>
                                     </form>
                                 </field>
