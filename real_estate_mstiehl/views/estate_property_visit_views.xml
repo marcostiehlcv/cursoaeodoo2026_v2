@@ -29,12 +29,12 @@
                     <button string="Confirm" name="action_confirmed" type="object" class="oe_highlight" invisible="state in ('confirmed','canceled', 'done')" />
                     <button string="Done" name="action_done" type="object" class="oe_highlight btn-success" invisible="state in ('done','draft', 'canceled')"/>
                     <field name="state" widget="statusbar" options="{'clickable': '1'}" />
+                </header>
+                    <sheet>
                     <widget name="web_ribbon"
                         title="Done" 
                         bg_color="text-bg-success" 
                         invisible="not state == 'done'"/>
-                </header>
-                    <sheet>
                         <group>
                             <field name="listing_id" />
                             <field name="property_id"/>
