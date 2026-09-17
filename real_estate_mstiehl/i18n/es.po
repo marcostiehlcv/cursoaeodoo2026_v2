@@ -6,11 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-16 22:53+0000\n"
-"PO-Revision-Date: 2026-09-16 22:53+0000\n"
+"POT-Creation-Date: 2026-09-17 00:21+0000\n"
+"PO-Revision-Date: 2026-09-17 00:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -110,6 +109,11 @@ msgid "Bedrooms"
 msgstr "Dormitorios"
 
 #. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
+msgid "Cancel"
+msgstr "Cancelada"
+
+#. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_listing__state__canceled
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__canceled
 msgid "Canceled"
@@ -130,7 +134,12 @@ msgstr "Código"
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_tag__color
 msgid "Color"
-msgstr "Color"
+msgstr ""
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
+msgid "Confirm"
+msgstr "Confirmada"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__confirmed
@@ -200,8 +209,19 @@ msgstr "Fecha de aceptación"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__date_canceled
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__date_canceled
 msgid "Date Canceled"
 msgstr "Fecha de cancelación"
+
+#. module: real_estate_mstiehl
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__date_confirmed
+msgid "Date Confirmed"
+msgstr ""
+
+#. module: real_estate_mstiehl
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__date_done
+msgid "Date Done"
+msgstr ""
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing_offer__date_expired
@@ -283,12 +303,14 @@ msgstr "Nombre mostrado"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__done
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
 msgid "Done"
 msgstr "Realizada"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_listing__state__draft
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__draft
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
 msgid "Draft"
 msgstr "Borrador"
 
@@ -450,7 +472,7 @@ msgstr "Tiene mensaje"
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_tag__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__activity_exception_icon
@@ -765,6 +787,7 @@ msgstr "Rechazada"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_listing__state__reserved
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_view_form
 msgid "Reserved"
 msgstr "Reservada"
 
@@ -873,12 +896,15 @@ msgstr ""
 #. module: real_estate_mstiehl
 #: model_terms:ir.actions.act_window,help:real_estate_mstiehl.estate_listing_type_view_action
 msgid "There is no examples click here to add new Estate Listing Type."
-msgstr "No hay ejemplos. Haga clic aquí para añadir un nuevo tipo de anuncio inmobiliario."
+msgstr ""
+"No hay ejemplos. Haga clic aquí para añadir un nuevo tipo de anuncio "
+"inmobiliario."
 
 #. module: real_estate_mstiehl
 #: model_terms:ir.actions.act_window,help:real_estate_mstiehl.estate_listing_view_action
 msgid "There is no examples click here to add new Estate Listing."
-msgstr "No hay ejemplos. Haga clic aquí para añadir un nuevo anuncio inmobiliario."
+msgstr ""
+"No hay ejemplos. Haga clic aquí para añadir un nuevo anuncio inmobiliario."
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property__total_area
