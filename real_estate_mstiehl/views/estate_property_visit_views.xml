@@ -25,11 +25,14 @@
                 <form string="Real Estate Property Visit">
                 <header>
                     <button string="Draft" name="action_draft" type="object" class="oe_highlight" invisible="not state in ('done', 'cancelled')"/>
-                    <button string="Draft" name="action_draft" type="object" class="oe_highlight"/>
                     <button string="Cancel" name="action_canceled" type="object" class="oe_highlight btn-danger" />
                     <button string="Confirm" name="action_confirmed" type="object" class="oe_highlight" />
                     <button string="Done" name="action_done" type="object" class="oe_highlight btn-success" />
                     <field name="state" widget="statusbar" options="{'clickable': '1'}" />
+                    <widget name="web_ribbon"
+                        title="Done" 
+                        bg_color="text-bg-success" 
+                        invisible="not state == 'done'"/>
                 </header>
                     <sheet>
                         <group>
