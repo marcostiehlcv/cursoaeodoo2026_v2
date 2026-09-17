@@ -23,6 +23,12 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
+                    <header>
+                        <widget name="web_ribbon"
+                            title="Reserved" 
+                            bg_color="text-bg-warning" 
+                            invisible="not available"/>
+                    </header>           
                     <sheet>
                         <field name="image_1920" widget='image' class="oe_avatar"/>
                         <group>
@@ -40,6 +46,7 @@
                             <group>
                                 <field name="property_type_id" />
                                 <field name="user_id"/>
+                                <field name="available"/>
                             </group>
                             <group>
                                 <div class="o_address_format" name="div_address">
