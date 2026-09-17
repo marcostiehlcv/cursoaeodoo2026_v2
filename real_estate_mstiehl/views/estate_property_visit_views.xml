@@ -30,14 +30,6 @@
                     <button string="Confirm" name="action_confirmed" type="object" class="oe_highlight" />
                     <button string="Done" name="action_done" type="object" class="oe_highlight btn-success" /> -->
                     <field name="state" widget="statusbar" option="{'clickable': true}" />
-                    <widget name="web_ribbon" 
-                        title="Cancelled" 
-                        bg_color="text-bg-danger" 
-                        states="cancelled"/>
-                    <widget name="web_ribbon" 
-                        title="Done"
-                        bg_color="text-bg-success"
-                        states="done"/>
                 </header>
                     <sheet>
                         <group>
