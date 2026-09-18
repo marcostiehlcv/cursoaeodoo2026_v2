@@ -11,7 +11,7 @@ class EstateListing(models.Model):
     name = fields.Char(string="Name", required=True, tracking=True)
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", tracking=True)
     listing_ref_code = fields.Char(string="Listing Code", store=True, tracking=True, readonly=True)
-    type_id = fields.Many2one(comodel_name="estate.listing.type", string="Type")
+    type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")
     description = fields.Text(string="Description", tracking=True)
     seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
@@ -37,15 +37,6 @@ class EstateListing(models.Model):
         context = self._context
         vals_list[0]["listing_ref_code"] = f"LIST#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
         return super(EstateListing, self).create(vals_list)
-    
-
-class EstateListingType(models.Model):
-    _name = "estate.listing.type"
-    _description = "Estate Listing Type"
-    
-    name = fields.Char(string="Name", required=True)
-    code = fields.Char(string="Code", required=True)
-    active = fields.Boolean(string="Active", default=True)
     
     
 class EstateListingOffer(models.Model):
