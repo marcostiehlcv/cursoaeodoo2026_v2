@@ -24,6 +24,9 @@ class EstateContract(models.Model):
     date_published = fields.Date(string="Date Published", readonly=True)
     date_signed = fields.Date(string="Date Signed", readonly=True)
     date_canceled = fields.Date(string="Date Canceled", readonly=True)
+    start_date = fields.Date(string="Start Date", default=fields.Date.today())
+    end_date = fields.Date(string="End Date")
+    active = fields.Boolean(string="Active", default=True)
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     
     @api.model_create_multi
