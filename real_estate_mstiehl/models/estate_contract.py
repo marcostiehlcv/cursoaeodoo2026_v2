@@ -18,7 +18,7 @@ class EstateContract(models.Model):
     buyer_ids = fields.One2many(comodel_name="estate.contract.buyer", inverse_name="contract_id", string="Buyers")
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
-    actual_price = fields.Float(string="Actual Price", default=0.0, readonly=True, tracking=True)
+    price = fields.Float(string="Price", default=0.0, readonly=True, tracking=True)
     state = fields.Selection(selection=[('draft', 'Draft'), ('published', 'Published'), ('signed', 'Signed'), ('canceled', 'Canceled')], string="State", default="draft")
     date_register = fields.Date(string="Date Register", default=fields.Date.today())
     date_published = fields.Date(string="Date Published", readonly=True)
