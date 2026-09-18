@@ -6,11 +6,12 @@ class EstateContract(models.Model):
     _name = "estate.contract"
     _description = "Estate Contract"
     _inherit = ["mail.thread", "mail.activity.mixin"]
+    _rec_name = "contract_ref_code"
     
     name = fields.Char(string="Name", required=True, tracking=True)
-    property_id = fields.Many2one(comodel_name="estate.property", string="Property", tracking=True)
-    contract_ref_code = fields.Char(string="Contract Code", store=True, tracking=True, readonly=True)
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing", tracking=True)
+    property_id = fields.Many2one(comodel_name="estate.property",string="Property",related="listing_id.property_id",store=True,readonly=True)
+    contract_ref_code = fields.Char(string="Contract Code", store=True, tracking=True, readonly=True, default="New")
     offer_id = fields.Many2one(comodel_name="estate.listing.offer", string="Offer", tracking=True)
     type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")
     description = fields.Text(string="Description", tracking=True)
