@@ -8,7 +8,7 @@ class EstateContract(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _rec_name = "contract_ref_code"
     
-    name = fields.Char(string="Name", required=True, tracking=True)
+    name = fields.Char(string="Name", required=True, default="New")
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing", tracking=True)
     property_id = fields.Many2one(comodel_name="estate.property",string="Property",related="listing_id.property_id",store=True,readonly=True)
     contract_ref_code = fields.Char(string="Contract Code", store=True, tracking=True, readonly=True, default="New")
@@ -33,7 +33,9 @@ class EstateContract(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["contract_ref_code"] = f"CONT#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
+        val_ref = f"CONT#{(datetime.today()).strftime('%y%m%d%H%M%S')}"  
+        vals_list[0]["contract_ref_code"] = val_ref          
+        vals_list[0]["name"] = val_ref
         return super(EstateContract, self).create(vals_list)
     
 class EstateContractType(models.Model):

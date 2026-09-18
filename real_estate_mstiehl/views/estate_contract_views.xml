@@ -38,18 +38,20 @@
                         </h1>
                     </div>
                     <group>
-                        <field name="listing_id" />
-                        <field name="property_id" />
-                        <field name="agent_id" />
-                        <field name="type_id" />
-                        <field name="price" />
-                    </group>
-                    <group string="Dates">
-                        <field name="date_start" />
-                        <field name="date_end" />
-                        <field name="date_register" />
-                        <field name="date_published" />
-                        <field name="date_signed" />
+                        <group>
+                            <field name="listing_id" />
+                            <field name="property_id" />
+                            <field name="agent_id" />
+                            <field name="type_id" />
+                            <field name="price" />
+                        </group>
+                        <group string="Dates">
+                            <field name="date_start" />
+                            <field name="date_end" />
+                            <field name="date_register" />
+                            <field name="date_published" />
+                            <field name="date_signed" />
+                        </group>
                     </group>
                     <notebook>
                         <page name="Buyers" string="Buyers">
