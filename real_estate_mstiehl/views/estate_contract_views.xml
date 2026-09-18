@@ -61,7 +61,7 @@
                                     <field name="notes"/>
                                     <field name="numerator"/>
                                     <field name="denominator"/>
-                                    <field name="total_share"/>
+                                    <field name="total_share" widget="percent"/>
                                 </list>
                             </field>
                         </page>

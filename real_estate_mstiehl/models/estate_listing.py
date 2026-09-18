@@ -7,6 +7,7 @@ class EstateListing(models.Model):
     _description = "Estate Listing"
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _order = "date_register desc"
+    rec_name = "listing_ref_code"
     
     name = fields.Char(string="Name", required=True, tracking=True)
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", tracking=True)
@@ -35,7 +36,9 @@ class EstateListing(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context
-        vals_list[0]["listing_ref_code"] = f"LIST#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
+        val_ref = f"LIST#{(datetime.today()).strftime('%y%m%d%H%M%S')}"
+        vals_list[0]["listing_ref_code"] = val_ref
+        vals_list[0]["name"] = val_ref
         return super(EstateListing, self).create(vals_list)
     
     

@@ -27,7 +27,7 @@
                         <widget name="web_ribbon"
                             title="Reserved" 
                             bg_color="text-bg-warning" 
-                            invisible="not available"/>
+                            invisible="available"/>
                     </header>           
                     <sheet>
                         <field name="image_1920" widget='image' class="oe_avatar"/>
