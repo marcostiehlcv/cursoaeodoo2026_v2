@@ -61,10 +61,10 @@
                                     <field name="partner_id"  widget="many2one_avatar_user"/>
                                     <field name="price" />
                                     <field name="state" />
-                                    <button name="action_line_accept_offer" type="object" icon="fa-check"
+                                    <button name="action_accepted" type="object" icon="fa-check"
                                             string="Accept" title="Accept this field"
                                             invisible="state in ('accepted', 'refused', 'expired')"/>
-                                    <button name="action_line_reject_offer" type="object" icon="fa-times"
+                                    <button name="action_refused" type="object" icon="fa-times"
                                             string="Reject" title="Reject this field"
                                             invisible="state in ('accepted', 'refused', 'expired')"/>
                                 </list>
