@@ -40,8 +40,40 @@ class EstateListing(models.Model):
         vals_list[0]["listing_ref_code"] = val_ref
         vals_list[0]["name"] = val_ref
         return super(EstateListing, self).create(vals_list)
-    
-    
+
+    def action_reserved(self):
+        for record in self:
+            record.state = "reserved"
+            record.date_reserved = fields.Date.today()
+
+    def action_sold(self):
+        for record in self:
+            record.state = "sold"
+            record.date_sold = fields.Date.today()
+            record._create_contract()
+
+    def _create_contract(self):
+        self.ensure_one()
+        accepted_offer = self.offer_ids.filtered(lambda o: o.state == "accepted")[:1]
+        self.env["estate.contract"].create({
+            "listing_id": self.id,
+            "property_id": self.property_id.id,
+            "offer_id": accepted_offer.id,
+            "type_id": self.type_id.id,
+            "description": self.description,
+            "seller_id": self.seller_id.id,
+            "agent_id": self.agent_id.id,
+            "expected_price": self.expected_price,
+            "price": accepted_offer.price if accepted_offer else self.selling_price,
+            "tags_ids": [(6, 0, self.tags_ids.ids)],
+            "buyer_ids": [(0, 0, {
+                "partner_id": accepted_offer.partner_id.id,
+                "numerator": 1,
+                "denominator": 1,
+            })] if accepted_offer else [],
+        })
+
+
 class EstateListingOffer(models.Model):
     _name = "estate.listing.offer"
     _description = "Estate Listing Offer"
@@ -61,7 +93,16 @@ class EstateListingOffer(models.Model):
     date_expired = fields.Date(string="Date Expired")
     
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
-    
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(EstateListingOffer, self).create(vals_list)
+        for record in records:
+            if record.listing_id.state in ("draft", "published"):
+                record.listing_id.state = "offer_received"
+                record.listing_id.date_offer_received = fields.Date.today()
+        return records
+
     def action_in_analysis(self):
         for record in self:
             record.state = "in_analysis"
@@ -71,6 +112,11 @@ class EstateListingOffer(models.Model):
         for record in self:
             record.state = "accepted"
             record.date_accepted = fields.Date.today()
+            other_offers = record.listing_id.offer_ids - record
+            other_offers.filtered(lambda o: o.state not in ("refused", "expired")).action_refused()
+            record.listing_id.selling_price = record.price
+            record.listing_id.state = "offer_accepted"
+            record.listing_id.date_offer_accepted = fields.Date.today()
     
     def action_refused(self):
         for record in self:

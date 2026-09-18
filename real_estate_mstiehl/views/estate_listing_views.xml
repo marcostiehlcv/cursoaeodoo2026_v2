@@ -26,6 +26,10 @@
         <field name="arch" type="xml">
             <form string="Estate Listing">
                 <header>
+                    <button name="action_reserved" type="object" string="Reserved" class="btn-primary"
+                            invisible="state != 'offer_accepted'"/>
+                    <button name="action_sold" type="object" string="Sold" class="btn-primary"
+                            invisible="state != 'reserved'"/>
                     <field name="state" widget="statusbar" options="{'clickable': '1'}" />
                 </header>
                 <sheet>
@@ -63,6 +67,7 @@
                                     <field name="state" widget="badge"      />
                                     <button name="action_accepted" type="object" icon="fa-check"
                                             string="Accept" class="text-success" title="Accept this field"
+                                            confirm="Are you sure you want to accept this offer?"
                                             invisible="state in ('accepted', 'refused', 'expired')"/>
                                     <button name="action_refused" type="object" icon="fa-times"
                                             string="Reject" class="text-danger" title="Reject this field"
