@@ -15,7 +15,7 @@ class EstateContract(models.Model):
     type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")
     description = fields.Text(string="Description", tracking=True)
     seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
-    buyer_ids = fields.One2many(comodel_name="estate.contract.buyers", inverse_name="contract_id", string="Buyers")
+    buyer_ids = fields.One2many(comodel_name="estate.contract.buyer", inverse_name="contract_id", string="Buyers")
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     actual_price = fields.Float(string="Actual Price", default=0.0, readonly=True, tracking=True)
