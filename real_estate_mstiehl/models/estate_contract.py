@@ -56,9 +56,9 @@ class EstateContractBuyers(models.Model):
     notes = fields.Text(string="Notes")
     numerator = fields.Integer(string="Numerator", default=1)
     denominator = fields.Integer(string="Denominator", default=1)
-    total_share = fields.Float(string="Total", compute="_compute_total")
+    total_share = fields.Float(string="Total", compute="_compute_total_share")
     
     @api.depends('numerator', 'denominator')
-    def _compute_total(self):
+    def _compute_total_share(self):
         for record in self:
-            record.total = record.numerator / record.denominator
+            record.total_share = record.numerator / record.denominator

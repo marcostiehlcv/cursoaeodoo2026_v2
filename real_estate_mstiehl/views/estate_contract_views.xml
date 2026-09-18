@@ -38,7 +38,7 @@
                         </h1>
                     </div>
                     <group>
-                        <group>
+                        <group String="Contract Details">
                             <field name="listing_id" />
                             <field name="property_id" />
                             <field name="agent_id" />
