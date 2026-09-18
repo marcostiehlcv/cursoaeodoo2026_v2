@@ -30,8 +30,31 @@ class EstateListing(models.Model):
     active = fields.Boolean(string="Active", default=True)
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     offer_ids = fields.One2many(comodel_name="estate.listing.offer", inverse_name="listing_id", string="Offers")
+    contract_ids = fields.One2many(comodel_name="estate.contract", inverse_name="listing_id", string="Contracts")
+    contract_count = fields.Integer(string="Contract Count", compute="_compute_contract_count")
 
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
+
+    @api.depends('contract_ids')
+    def _compute_contract_count(self):
+        for record in self:
+            record.contract_count = len(record.contract_ids)
+
+    def action_view_contract(self):
+        self.ensure_one()
+        action = {
+            "name": _("Contract"),
+            "type": "ir.actions.act_window",
+            "res_model": "estate.contract",
+            "context": {"default_listing_id": self.id},
+        }
+        if len(self.contract_ids) == 1:
+            action["view_mode"] = "form"
+            action["res_id"] = self.contract_ids.id
+        else:
+            action["view_mode"] = "list,form"
+            action["domain"] = [("listing_id", "=", self.id)]
+        return action
     
     @api.model_create_multi
     def create(self, vals_list):
