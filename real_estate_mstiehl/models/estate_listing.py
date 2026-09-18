@@ -9,7 +9,7 @@ class EstateListing(models.Model):
     _order = "date_register desc"
     rec_name = "listing_ref_code"
     
-    name = fields.Char(string="Name", required=True, tracking=True)
+    name = fields.Char(string="Name", required=True, default="New")
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", tracking=True)
     listing_ref_code = fields.Char(string="Listing Code", store=True, tracking=True, readonly=True)
     type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")

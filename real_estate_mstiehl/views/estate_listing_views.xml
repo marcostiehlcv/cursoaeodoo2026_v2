@@ -31,7 +31,7 @@
                     <button string="Accept Offer" name="action_accept" type="object" class="oe_highlight btn-success" invisible="state != 'in_analysis'"/>
                     <button string="Reject Offer" name="action_accept" type="object" class="oe_highlight btn-danger" invisible="state != 'in_analysis'"/>
                     <button string="Reserved" name="action_reserved" type="object" class="oe_highlight" invisible="state != 'in_analysis'"/> -->
-                    <field name="state" widget="statusbar"/>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}" />
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -42,17 +42,16 @@
                     </div>
                     <group> <field name="tags_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': True}"/>  </group>
                     <group col="2">
-                        <group>
-                            <field name="name" />
+                        <group string="Listing Details">
                             <field name="listing_ref_code" />
                             <field name="property_id" />
                             <field name="type_id" />
                             <field name="seller_id" widget="many2one_avatar_user"/>
                             <field name="agent_id"  widget="many2one_avatar_user"/>
-                        </group>
-                        <group>
                             <field name="expected_price" />
                             <field name="selling_price" />
+                        </group>
+                        <group string="Listing Prices">
                             <field name="date_published" />
                             <field name="date_offer_accepted" />
                             <field name="date_reserved" />
