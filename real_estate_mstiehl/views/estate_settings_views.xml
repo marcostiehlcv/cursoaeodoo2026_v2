@@ -43,7 +43,7 @@
         <!-- Action Stages  -->
         <record id="estate_stage_view_action" model="ir.actions.act_window">
             <field name="name">Estate Stages</field>
-            <field name="res_model">estate.stages</field>
+            <field name="res_model">estate.stage</field>
             <field name="view_mode">list,form</field>
         </record>
 
