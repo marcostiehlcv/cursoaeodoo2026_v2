@@ -84,6 +84,7 @@
                 <filter string="Not Signed" domain="[('state','!=','signed')]"/>
             </search>
         </field>
+    </record>
 
     <!-- Action estate.contract -->
     <record id="estate_contract_view_action" model="ir.actions.act_window">
