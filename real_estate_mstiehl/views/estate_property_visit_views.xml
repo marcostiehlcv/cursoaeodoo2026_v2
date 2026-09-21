@@ -100,8 +100,7 @@
                             <div class="oe_kanban_global_click">
                                 <div class="d-flex justify-content-between">
                                     <strong><field name="visitor_id"/></strong>
-                                    <field name="stage_id_code" widget="label_selection"
-                                           options="{'classes': {'draft': 'default', 'confirmed': 'info', 'done': 'success', 'canceled': 'danger'}}"/>
+                                    <field name="stage_id" widget="badge"/>
                                 </div>
                                 <div><field name="listing_id"/></div>
                                 <div><field name="property_id"/></div>
