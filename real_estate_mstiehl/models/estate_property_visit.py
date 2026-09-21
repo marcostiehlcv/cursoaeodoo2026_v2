@@ -22,8 +22,8 @@ class EstateVisit(models.Model):
     stage_id_code = fields.Char(string="Stage Code", related="stage_id.code", store=True, readonly=True)
     color = fields.Integer(string="Color Index", default=0)
     
-    def _read_group_stage_ids(self,):# -> Any:
-        return self.env['estate.stage'].search([('type_id.code', '=', 'VISIT')] )
+    def _read_group_stage_ids(self, stages, domain):
+        return self.env['estate.stage'].search([('type_id.code', '=', 'visit')])
     
     
     

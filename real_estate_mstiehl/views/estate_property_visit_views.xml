@@ -95,7 +95,7 @@
                         </t>
                         <t t-name="card">
                             <widget name="web_ribbon" id="visit_done" title="Done" bg_color="text-bg-success" invisible="stage_id_code != 'done'"/>
-                            <widget name="web_ribbon" id="visit_done" title="Done" bg_color="text-bg-danger" invisible="stage_id_code != 'done'"/>
+                            <widget name="web_ribbon" id="visit_canceled" title="Canceled" bg_color="text-bg-danger" invisible="stage_id_code != 'canceled'"/>
 
                             <div class="oe_kanban_global_click">
                                 <div class="d-flex justify-content-between">
