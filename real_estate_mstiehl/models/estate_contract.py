@@ -49,7 +49,7 @@ class EstateContractType(models.Model):
 class EstateContractBuyers(models.Model):
     _name = "estate.contract.buyer"
     _description = "Estate Contract Buyer"
-    _rec_name = "contract_id"
+    _rec_name = "partner_id"
     
     contract_id = fields.Many2one(comodel_name="estate.contract", string="Contract")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Partner")
