@@ -11,7 +11,7 @@ class EstateTag(models.Model):
     active = fields.Boolean(string="Active", default=True)
 
 class EstateStages(models.Model):
-    _name = "estate.stages"
+    _name = "estate.stage"
     _description = "Estate Stages"
     
     name = fields.Char(string="Name", required=True)
