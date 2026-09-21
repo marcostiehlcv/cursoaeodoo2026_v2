@@ -32,10 +32,25 @@
         </record>
 
 
-        <!-- Action -->
+        <!-- Action TAG -->
         <record id="estate_tag_view_action" model="ir.actions.act_window">
             <field name="name">Estate Tags</field>
             <field name="res_model">estate.tag</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+
+        <!-- Action Stages  -->
+        <record id="estate_stage_view_action" model="ir.actions.act_window">
+            <field name="name">Estate Stages</field>
+            <field name="res_model">estate.stage</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+                <!-- Action Stages  Type -->
+        <record id="estate_stage_type_view_action" model="ir.actions.act_window">
+            <field name="name">Estate Stage Types</field>
+            <field name="res_model">estate.stage.type</field>
             <field name="view_mode">list,form</field>
         </record>
 

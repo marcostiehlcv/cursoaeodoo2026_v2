@@ -60,6 +60,11 @@ class EstateProperty(models.Model):
     available = fields.Boolean(string="Available", default=True, tracking=True)
     
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
+    
+    color = fields.Integer(string="Color Index", default=0)
+    
+    
+    
                 
     @api.model_create_multi
     def create(self, vals_list):
