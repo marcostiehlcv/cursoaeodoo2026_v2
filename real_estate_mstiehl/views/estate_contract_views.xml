@@ -71,21 +71,6 @@
         </field>
     </record>
 
-    <record id="view_estate_contract_search" model="ir.ui.view">
-        <field name="name">view.estate.contract.search</field>
-        <field name="model">estate.contract</field>
-        <field name="arch" type="xml">
-            <search string="Estate Contract Search">
-                <field name="name"/>
-                <field name="property_id"/>
-                <field name="buyer_ids" />
-                <field name="type_id"/>
-                <filter string="Signed" domain="[('state','=','signed')]"/>
-                <filter string="Not Signed" domain="[('state','!=','signed')]"/>
-            </search>
-        </field>
-    </record>
-
     <!-- Action estate.contract -->
     <record id="estate_contract_view_action" model="ir.actions.act_window">
         <field name="name">Estate Contracts</field>
