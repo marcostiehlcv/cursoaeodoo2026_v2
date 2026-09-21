@@ -18,6 +18,14 @@ class EstateVisit(models.Model):
     date_confirmed = fields.Date(string="Date Confirmed", readonly=True)
     date_done = fields.Date(string="Date Done", readonly=True)
     date_canceled = fields.Date(string="Date Canceled", readonly=True)
+    stage_id = fields.Many2one(comodel_name="estate.stage", string="Stage", domain="[('type_id.code','=','visit')]", group_expand='_read_group_stage_ids', tracking=True)
+    stage_id_code = fields.Char(string="Stage Code", related="stage_id.code", store=True, readonly=True)
+    color = fields.Integer(string="Color Index", default=0)
+    
+    def _read_group_stage_ids(self,):# -> Any:
+        return self.env['estate.stage'].search([('type_id.code', '=', 'VISIT')] )
+    
+    
     
     def action_done(self):
         for record in self:
