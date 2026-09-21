@@ -47,12 +47,80 @@
             </field>
         </record>
 
+        <!-- Search View -->
+        <record id="estate_property_visit_view_search" model="ir.ui.view">
+            <field name="name">estate.property.visit.view.search</field>
+            <field name="model">estate.property.visit</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="listing_id"/>
+                    <field name="property_id"/>
+                    <field name="visitor_id"/>
+                    <field name="agent_id"/>
+                    <field name="date"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Kanban-->
+        <record id="estate_property_visit_view_kanban" model="ir.ui.view">
+            <field name="name">estate.property.visit.view.kanban</field>
+            <field name="model">estate.property.visit</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_example" default_group_by="state">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record #{kanban_getcolor(record.state.raw_value)}">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="'/web/image/res.users/%s/image_128' % record.visitor_id.raw_value[0]" class="o_kanban_avatar"/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong><field name="visitor_id"/></strong>
+                                    <div><field name="listing_id"/></div>
+                                    <div><field name="property_id"/></div>
+                                    <div><field name="agent_id"/></div>
+                                    <div><field name="date"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- pivot -->
+        <record id="estate_property_visit_view_pivot" model="ir.ui.view">
+            <field name="name">estate.property.visit.view.pivot</field>
+            <field name="model">estate.property.visit</field>
+            <field name="arch" type="xml">
+                <pivot string="Real Estate Property Visit">
+                    <field name="listing_id"/>
+                    <field name="property_id"/>
+                    <field name="visitor_id"/>
+                    <field name="agent_id"/>
+                    <field name="date"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="estate_property_visit_view_calendar" model="ir.ui.view">
+            <field name="name">estate.property.visit.view.calendar</field>
+            <field name="model">estate.property.visit</field>
+            <field name="arch" type="xml">
+                <calendar string="Real Estate Property Visit" date_start="date" color="state">
+                    <field name="listing_id"/>
+                    <field name="property_id"/>
+                    <field name="visitor_id"/>
+                    <field name="agent_id"/>
+                </calendar>
+            </field>
+        </record>
 
         <!-- Action -->
         <record id="estate_property_visit_view_action" model="ir.actions.act_window">
             <field name="name">Estate property.visits</field>
             <field name="res_model">estate.property.visit</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">list,form,calendar</field>
         </record>
 
     </data>
