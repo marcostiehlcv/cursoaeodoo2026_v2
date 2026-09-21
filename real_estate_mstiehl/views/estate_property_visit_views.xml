@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property Visit">
                 <header>
-                    <button string="Draft" name="action_draft" type="object" class="oe_highlight" invisible="state in ('draft','done', 'cancelled')"/>
+                    <button string="Draft" name="action_draft" type="object" class="oe_highlight" invisible="state in ('draft','done', 'canceled')"/>
                     <button string="Cancel" name="action_canceled" type="object" class="oe_highlight btn-danger" invisible="state in ('canceled','draft', 'done')"/>
                     <button string="Confirm" name="action_confirmed" type="object" class="oe_highlight" invisible="state in ('confirmed','canceled', 'done')" />
                     <button string="Done" name="action_done" type="object" class="oe_highlight btn-success" invisible="state in ('done','draft', 'canceled')"/>
@@ -52,12 +52,28 @@
             <field name="name">estate.property.visit.view.search</field>
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
-                <search>
+                <search string="Real Estate Property Visit">
+                    <field name="name"/>
                     <field name="listing_id"/>
                     <field name="property_id"/>
                     <field name="visitor_id"/>
                     <field name="agent_id"/>
                     <field name="date"/>
+                    <separator/>
+                    <filter string="Draft" name="filter_draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Confirmed" name="filter_confirmed" domain="[('state', '=', 'confirmed')]"/>
+                    <filter string="Done" name="filter_done" domain="[('state', '=', 'done')]"/>
+                    <filter string="Canceled" name="filter_canceled" domain="[('state', '=', 'canceled')]"/>
+                    <separator/>
+                    <filter string="My Visits" name="filter_my_visits" domain="[('agent_id', '=', uid)]"/>
+                    <filter string="Today" name="filter_today" domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" name="groupby_state" context="{'group_by': 'state'}"/>
+                        <filter string="Listing" name="groupby_listing" context="{'group_by': 'listing_id'}"/>
+                        <filter string="Property" name="groupby_property" context="{'group_by': 'property_id'}"/>
+                        <filter string="Agent" name="groupby_agent" context="{'group_by': 'agent_id'}"/>
+                        <filter string="Date" name="groupby_date" context="{'group_by': 'date'}"/>
+                    </group>
                 </search>
             </field>
         </record>
@@ -67,20 +83,20 @@
             <field name="name">estate.property.visit.view.kanban</field>
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
-                <kanban class="o_kanban_example" default_group_by="state">
+                <kanban class="o_kanban_small_column" default_group_by="state">
+                    <field name="state"/>
                     <templates>
-                        <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record #{kanban_getcolor(record.state.raw_value)}">
-                                <div class="o_kanban_image">
-                                    <img t-att-src="'/web/image/res.users/%s/image_128' % record.visitor_id.raw_value[0]" class="o_kanban_avatar"/>
-                                </div>
-                                <div class="o_kanban_details">
+                        <t t-name="card">
+                            <div class="oe_kanban_global_click">
+                                <div class="d-flex justify-content-between">
                                     <strong><field name="visitor_id"/></strong>
-                                    <div><field name="listing_id"/></div>
-                                    <div><field name="property_id"/></div>
-                                    <div><field name="agent_id"/></div>
-                                    <div><field name="date"/></div>
+                                    <field name="state" widget="label_selection"
+                                           options="{'classes': {'draft': 'default', 'confirmed': 'info', 'done': 'success', 'canceled': 'danger'}}"/>
                                 </div>
+                                <div><field name="listing_id"/></div>
+                                <div><field name="property_id"/></div>
+                                <div class="text-muted"><field name="agent_id"/></div>
+                                <div class="text-muted"><field name="date"/></div>
                             </div>
                         </t>
                     </templates>
@@ -94,12 +110,22 @@
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
                 <pivot string="Real Estate Property Visit">
-                    <field name="listing_id"/>
-                    <field name="property_id"/>
-                    <field name="visitor_id"/>
-                    <field name="agent_id"/>
-                    <field name="date"/>
+                    <field name="agent_id" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="date" interval="month" type="row"/>
                 </pivot>
+            </field>
+        </record>
+
+        <!-- graph -->
+        <record id="estate_property_visit_view_graph" model="ir.ui.view">
+            <field name="name">estate.property.visit.view.graph</field>
+            <field name="model">estate.property.visit</field>
+            <field name="arch" type="xml">
+                <graph string="Real Estate Property Visit" type="bar">
+                    <field name="date" interval="month"/>
+                    <field name="state"/>
+                </graph>
             </field>
         </record>
 
@@ -118,9 +144,11 @@
 
         <!-- Action -->
         <record id="estate_property_visit_view_action" model="ir.actions.act_window">
-            <field name="name">Estate property.visits</field>
+            <field name="name">Estate Property Visits</field>
             <field name="res_model">estate.property.visit</field>
-            <field name="view_mode">list,form,calendar</field>
+            <field name="view_mode">list,form,kanban,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="estate_property_visit_view_search"/>
+            <field name="context">{'search_default_groupby_state': 1}</field>
         </record>
 
     </data>
