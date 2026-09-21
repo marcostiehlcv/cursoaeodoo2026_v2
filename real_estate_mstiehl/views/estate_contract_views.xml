@@ -78,7 +78,7 @@
             <search string="Estate Contract Search">
                 <field name="name"/>
                 <field name="property_id"/>
-                <field name="buyer_ids"/>
+                <field name="buyer_ids" />
                 <field name="type_id"/>
                 <filter string="Signed" domain="[('state','=','signed')]"/>
                 <filter string="Not Signed" domain="[('state','!=','signed')]"/>
