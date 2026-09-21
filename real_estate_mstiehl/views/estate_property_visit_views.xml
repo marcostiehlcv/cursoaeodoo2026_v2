@@ -67,7 +67,7 @@
                     <separator/>
                     <filter string="My Visits" name="filter_my_visits" domain="[('agent_id', '=', uid)]"/>
                     <filter string="Today" name="filter_today" domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Status" name="groupby_state" context="{'group_by': 'state'}"/>
                         <filter string="Listing" name="groupby_listing" context="{'group_by': 'listing_id'}"/>
                         <filter string="Property" name="groupby_property" context="{'group_by': 'property_id'}"/>
