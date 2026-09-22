@@ -71,6 +71,13 @@ class EstateProperty(models.Model):
         context = self._context
         vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
+    
+    def create_visit(self):
+        self.ensure_one()
+        self.create({
+            "date_visit": fields.Date.today(),
+            "listing_id": self.id,
+        })
 
 class EstatePropertyType(models.Model):
     _name = "estate.property.type"

@@ -33,7 +33,7 @@ class EstateContract(models.Model):
     duration_days = fields.Integer(string="Number of Days", compute="_compute_number_of_days", store=True)
     days_left = fields.Integer(string="Days Left", compute="_compute_days_left", store=True)
     
-    @api.depends( 'date_end')
+
     def _compute_days_left(self):
         for record in self:
             if record.date_end:
