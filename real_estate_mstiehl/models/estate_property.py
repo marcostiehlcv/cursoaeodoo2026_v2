@@ -72,11 +72,20 @@ class EstateProperty(models.Model):
         vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
     
-    def create_visit(self):
+    def create_listing(self):
         self.ensure_one()
-        self.env["estate.visit"].create({
-            "date": fields.Date.today(),
-            "listing_id": self.id,
+        self.env["estate.listing"].create({
+            "property_id": self.id,
+            "expected_price": self.expected_price,
+            "selling_price": self.selling_price,
+            "description": self.description,
+            "type_id": self.property_type_id.id,
+            "seller_id": self.seller_id.id,
+            "agent_id": self.agent_id.id,
+            "external_url": self.external_url,
+            "date_register": fields.Date.today(),
+            "tags_ids": [(6, 0, [tag.id for tag in self.tags_ids])] if self.tags_ids else [],
+            "user_id": self.env.user.id,
         })
 
 class EstatePropertyType(models.Model):

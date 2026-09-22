@@ -95,6 +95,13 @@ class EstateListing(models.Model):
                 "denominator": 1,
             })] if accepted_offer else [],
         })
+        
+    def create_visit(self):
+        self.ensure_one()
+        self.env["estate.visit"].create({
+            "date": fields.Date.today(),
+            "listing_id": self.id,
+        })
 
 
 class EstateListingOffer(models.Model):

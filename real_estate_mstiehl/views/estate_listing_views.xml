@@ -26,6 +26,7 @@
         <field name="arch" type="xml">
             <form string="Estate Listing">
                 <header>
+                    <button name="create_visit" string="Create Visit" type="object" class="oe_highlight" />
                     <button name="action_reserved" type="object" string="Reserved" class="btn-primary"
                             invisible="state != 'offer_accepted'"/>
                     <button name="action_sold" type="object" string="Sold" class="btn-primary"
