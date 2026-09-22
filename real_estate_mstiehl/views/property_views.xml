@@ -64,6 +64,8 @@
                         <notebook>
                             <page name="details" string="Details">
                                 <group>
+                                    <field name="expected_price" />
+                                    <field name="selling_price" />
                                     <field name="description" />
                                     <field name="bedrooms" />
                                     <field name="bathrooms" />

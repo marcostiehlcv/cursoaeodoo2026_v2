@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 from datetime import datetime
 from datetime import timedelta
 
@@ -74,19 +75,32 @@ class EstateProperty(models.Model):
     
     def action_create_listing(self):
         self.ensure_one()
-        self.env["estate.listing"].create({
-            "property_id": self.id,
-            "expected_price": self.expected_price,
-            "selling_price": self.selling_price,
-            "description": self.description,
-            "type_id": self.property_type_id.id,
-            "seller_id": self.seller_id.id,
-            "agent_id": self.agent_id.id,
-            "external_url": self.external_url,
-            "date_register": fields.Date.today(),
-            "tags_ids": [(6, 0, [tag.id for tag in self.tags_ids])] if self.tags_ids else [],
-            "user_id": self.env.user.id,
-        })
+        try:
+            self.env["estate.listing"].create({
+                "property_id": self.id,
+                "expected_price": self.expected_price,
+                "selling_price": self.selling_price,
+                "description": self.description,
+                "type_id": self.property_type_id.id,
+                "seller_id": self.seller_id.id,
+                "agent_id": self.agent_id.id,
+                "external_url": self.external_url,
+                "date_register": fields.Date.today(),
+                "tags_ids": [(6, 0, [tag.id for tag in self.tags_ids])] if self.tags_ids else [],
+                "user_id": self.env.user.id,
+            })
+        except Exception as error:
+            raise UserError(_("The listing could not be created: %s", error)) from error
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Listing Created"),
+                "message": _("The listing was created successfully."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
 
 class EstatePropertyType(models.Model):
     _name = "estate.property.type"

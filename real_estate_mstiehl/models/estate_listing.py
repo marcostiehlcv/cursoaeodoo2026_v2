@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 from datetime import datetime
 from datetime import timedelta
 
@@ -98,17 +99,49 @@ class EstateListing(models.Model):
         
     def action_create_visit(self):
         self.ensure_one()
-        self.env["estate.property.visit"].create({
-            "date": fields.Date.today(),
-            "listing_id": self.id,
-        })
-        
-    
+        try:
+            self.env["estate.property.visit"].create({
+                "date": fields.Date.today(),
+                "listing_id": self.id,
+            })
+        except Exception as error:
+            raise UserError(_("The visit could not be created: %s", error)) from error
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Visit Created"),
+                "message": _("The visit was created successfully."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
     def action_accept_best_offer(self):
-        for record in self:
-            best_offer = self.env["estate.listing.offer"].search([("listing_id", "=", record.id), ("state", "=", "submitted")], order="price desc", limit=1)
-            if best_offer:
-                best_offer.action_accepted()
+        accepted = self.browse()
+        try:
+            for record in self:
+                best_offer = self.env["estate.listing.offer"].search(
+                    [("listing_id", "=", record.id), ("state", "=", "submitted")],
+                    order="price desc", limit=1,
+                )
+                if best_offer:
+                    best_offer.action_accepted()
+                    accepted |= record
+        except Exception as error:
+            raise UserError(_("The best offer could not be accepted: %s", error)) from error
+        if not accepted:
+            raise UserError(_("No submitted offer was found to accept."))
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Offer Accepted"),
+                "message": _("The best offer was accepted successfully."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
 
 
 class EstateListingOffer(models.Model):
