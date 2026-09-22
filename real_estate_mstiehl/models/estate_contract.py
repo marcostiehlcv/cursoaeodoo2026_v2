@@ -30,6 +30,26 @@ class EstateContract(models.Model):
     active = fields.Boolean(string="Active", default=True)
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     
+    duration_days = fields.Integer(string="Number of Days", compute="_compute_number_of_days", store=True)
+    days_left = fields.Integer(string="Days Left", compute="_compute_days_left", store=True)
+    
+    @api.depends( 'date_end')
+    def _compute_days_left(self):
+        for record in self:
+            if record.date_end:
+                delta = record.date_end - datetime.today().date()
+                record.days_left = delta.days
+    
+    
+    @api.depends('date_start', 'date_end')
+    def _compute_number_of_days(self):
+        for record in self:
+            if record.date_start and record.date_end:
+                delta = record.date_end - record.date_start
+                record.duration_days = delta.days
+            else:
+                record.duration_days = 0
+
     @api.model_create_multi
     def create(self, vals_list):
         context = self._context

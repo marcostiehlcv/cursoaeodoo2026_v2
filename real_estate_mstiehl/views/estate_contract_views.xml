@@ -48,6 +48,8 @@
                         <group string="Dates">
                             <field name="date_start" />
                             <field name="date_end" />
+                            <field name="duration_days" />
+                            <field name="days_left" />
                             <field name="date_register" />
                             <field name="date_published" />
                             <field name="date_signed" />

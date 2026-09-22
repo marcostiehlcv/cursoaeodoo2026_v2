@@ -14,7 +14,7 @@ class EstateStages(models.Model):
     _name = "estate.stage"
     _description = "Estate Stages"
     
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Name", required=True, translation=True)
     code = fields.Char(string="Code", required=True)
     active = fields.Boolean(string="Active", default=True)
     sequence = fields.Integer(string="Sequence", default=1)
