@@ -44,6 +44,8 @@
                             <field name="agent_id" />
                             <field name="type_id" />
                             <field name="price" />
+                            <field name="security_deposit" />
+                            <field name="has_security_deposit" readonly="1" widget="boolean"/>
                         </group>
                         <group string="Dates">
                             <field name="date_start" />
