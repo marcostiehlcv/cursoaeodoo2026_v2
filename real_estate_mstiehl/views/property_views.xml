@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <form string="Real Estate Property">
                     <header>
-                        <button name="create_listing" string="Create Listing" type="object" class="oe_highlight" />
+                        <button name="action_create_listing" string="Create Listing" type="object" class="oe_highlight" />
                         <widget name="web_ribbon"
                             title="Reserved" 
                             bg_color="text-bg-warning" 

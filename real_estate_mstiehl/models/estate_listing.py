@@ -96,12 +96,19 @@ class EstateListing(models.Model):
             })] if accepted_offer else [],
         })
         
-    def create_visit(self):
+    def action_create_visit(self):
         self.ensure_one()
         self.env["estate.property.visit"].create({
             "date": fields.Date.today(),
             "listing_id": self.id,
         })
+        
+    
+    def action_accept_best_offer(self):
+        for record in self:
+            best_offer = self.env["estate.listing.offer"].search([("listing_id", "=", record.id), ("state", "=", "submitted")], order="price desc", limit=1)
+            if best_offer:
+                best_offer.action_accepted()
 
 
 class EstateListingOffer(models.Model):

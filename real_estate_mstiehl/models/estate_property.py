@@ -72,7 +72,7 @@ class EstateProperty(models.Model):
         vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
         return super(EstateProperty, self).create(vals_list)
     
-    def create_listing(self):
+    def action_create_listing(self):
         self.ensure_one()
         self.env["estate.listing"].create({
             "property_id": self.id,
