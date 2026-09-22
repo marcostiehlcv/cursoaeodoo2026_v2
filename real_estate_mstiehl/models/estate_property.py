@@ -74,7 +74,7 @@ class EstateProperty(models.Model):
     
     def create_visit(self):
         self.ensure_one()
-        self.create({
+        self.env["estate.visit"].create({
             "date": fields.Date.today(),
             "listing_id": self.id,
         })
