@@ -20,6 +20,8 @@ class EstateContract(models.Model):
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     price = fields.Float(string="Price", default=0.0, readonly=True, tracking=True)
+    security_deposit = fields.Float(string="Security Deposit", default=0.0, readonly=True, tracking=True)
+    has_security_deposit = fields.Boolean(string="Has Security Deposit", compute="_compute_has_security_deposit", default=False, tracking=True)
     state = fields.Selection(selection=[('draft', 'Draft'), ('published', 'Published'), ('signed', 'Signed'), ('canceled', 'Canceled')], string="State", default="draft")
     date_register = fields.Date(string="Date Register", default=fields.Date.today())
     date_published = fields.Date(string="Date Published", readonly=True)
@@ -31,7 +33,23 @@ class EstateContract(models.Model):
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     
     duration_days = fields.Integer(string="Number of Days", compute="_compute_number_of_days", store=True)
+    days_used = fields.Integer(string="Days Used", compute="_compute_days_used", store=True)
     days_left = fields.Integer(string="Days Left", compute="_compute_days_left", store=True)
+    
+    @api.depends('security_deposit')
+    def _compute_has_security_deposit(self):
+        for record in self:
+            record.has_security_deposit = record.security_deposit > 0
+    
+    
+    @api.depends('date_start')
+    def _compute_days_used(self):
+        for record in self:
+            if record.date_start:
+                delta = datetime.today().date() - record.date_start
+                record.days_used = delta.days
+            else:
+                record.days_used = 0
     
 
     def _compute_days_left(self):
