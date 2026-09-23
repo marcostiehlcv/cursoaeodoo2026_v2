@@ -60,7 +60,7 @@
                                         <field name="cunstruction_year" />
                                         <field name="user_id"/>
                                         <field name="seller_id"/>
-                                        <field name="agent_id"/>
+                                        <field name="agent_id" widget="many2one_avatar_user"/>
                                         <field name="date_register" />
                                         <field name="date_sold" />
                                     </group>
