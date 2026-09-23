@@ -19,7 +19,7 @@ class EstatePropertyTicket(models.Model):
         ("1", "Medium"),
         ("2", "High"),
         ("3", "Urgent")
-    ], string="Priority", default="low", tracking=True)
+    ], string="Priority", default="0", tracking=True)
     state = fields.Selection([
         ("new", "New"),
         ("in_progress", "In Progress"),
