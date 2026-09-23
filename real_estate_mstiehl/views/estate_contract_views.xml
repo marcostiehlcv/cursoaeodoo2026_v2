@@ -29,6 +29,7 @@
                 <field name="price"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
+                <field name="state" widget="badge" decoration-success="state == 'signed'" decoration-warning="state == 'draft'" decoration-info="state == 'published'" decoration-danger="state == 'canceled'"/>
             </list>
         </field>
     </record>
