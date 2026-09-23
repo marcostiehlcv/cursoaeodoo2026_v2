@@ -78,6 +78,7 @@
                     <field name="responsible_id" domain="[('share', '=', False)]" />
                     <field name="description" />
                     <field name="priority" widget="priority"/>
+                    <field name="agent_id" />
                     <field name="state" widget="badge"
                            decoration-info="state == 'in_progress'"
                            decoration-success="state == 'done'"
