@@ -27,6 +27,7 @@
                                 <field name="responsible_id" domain="[('share', '=', False)]" />
                             </group>
                             <group>
+                                <field name="ticket_type"/>
                                 <field name="priority" widget="priority"/>
                             </group>
                         </group>
@@ -48,6 +49,10 @@
                     <field name="name"/>
                     <field name="property_id"/>
                     <field name="responsible_id" widget="many2one_avatar_user" domain="[('share', '=', False)]" />
+                    <field name="ticket_type" widget="badge"
+                           decoration-info="ticket_type == 'issue'"
+                           decoration-warning="ticket_type == 'request'"
+                           decoration-success="ticket_type == 'task'"/>
                     <field name="description" optional="hide"/>
                     <field name="priority" widget="priority"/>
                     <field name="state" widget="badge"
@@ -69,6 +74,7 @@
                 <list string="Real Estate Property Tickets" default_order="id desc" editable="bottom">
                     <field name="sequence" widget="handle" />
                     <field name="ticket_ref_code" readonly="1"/>
+                    <field name="ticket_type"/>
                     <field name="responsible_id" domain="[('share', '=', False)]" />
                     <field name="description" />
                     <field name="priority" widget="priority"/>
