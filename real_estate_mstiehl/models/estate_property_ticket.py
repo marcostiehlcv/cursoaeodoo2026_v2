@@ -15,11 +15,11 @@ class EstatePropertyTicket(models.Model):
     responsible_id = fields.Many2one(comodel_name="res.users", string="Responsible", tracking=True)
     description = fields.Text(string="Description", required=True)
     priority = fields.Selection([
-        ("0", "Low"),
-        ("1", "Medium"),
-        ("2", "High"),
-        ("3", "Urgent")
-    ], string="Priority", default="0", tracking=True)
+        ("1", "Low"),
+        ("2", "Medium"),
+        ("3", "High"),
+        ("4", "Urgent")
+    ], string="Priority", default="1", tracking=True)
     state = fields.Selection([
         ("new", "New"),
         ("in_progress", "In Progress"),
