@@ -44,49 +44,57 @@
                         </div>
                         <group> <field name="tags_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': True}"/>  </group>
                         <group col="2">
-                            <group string="Property">
+                            <group>
                                 <field name="property_type_id" />
-                                <field name="cunstruction_year" />
-                                <field name="user_id"/>
                                 <field name="available"/>
-                                <field name="seller_id"/>
-                                <field name="agent_id"/>
                             </group>
-                            <group string="Pricing">
+                            <group>
                                 <field name="expected_price" />
                                 <field name="selling_price" />
-                                <field name="date_register" />
-                                <field name="date_sold" />
-                            </group>
-                        </group>
-                        <group col="2">
-                            <group string="Address">
-                                <field name="street" string="Street"/>
-                                <field name="street2" string="Street 2"/>
-                                <field name="city" string="City"/>
-                                <field name="state_id" string="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
-                                <field name="zip" string="ZIP"/>
-                                <field name="country_id" string="Country" options='{"no_open": True, "no_create": True}'/>
-                            </group>
-                            <group string="Areas &amp; Rooms">
-                                <field name="total_area" />
-                                <field name="living_area" />
-                                <field name="bedrooms" />
-                                <field name="bathrooms" />
-                                <field name="garage" />
-                                <field name="garden" />
-                                <field name="garden_area" invisible="not garden"/>
-                                <field name="garden_orientation" invisible="not garden"/>
                             </group>
                         </group>
                         <notebook>
                             <page name="details" string="Details">
+                                <group col="2">
+                                    <group string="Property">
+                                        <field name="cunstruction_year" />
+                                        <field name="user_id"/>
+                                        <field name="seller_id"/>
+                                        <field name="agent_id"/>
+                                        <field name="date_register" />
+                                        <field name="date_sold" />
+                                    </group>
+                                    <group string="Areas &amp; Rooms">
+                                        <field name="total_area" />
+                                        <field name="living_area" />
+                                        <field name="bedrooms" />
+                                        <field name="bathrooms" />
+                                        <field name="garage" />
+                                        <field name="garden" />
+                                        <field name="garden_area" invisible="not garden"/>
+                                        <field name="garden_orientation" invisible="not garden"/>
+                                    </group>
+                                </group>
                                 <group>
                                     <field name="description" />
                                     <field name="external_url" widget="url"/>
-                                    <field name="google_maps_url" widget="url"/>
-                                    <field name="partner_latitude"/>
-                                    <field name="partner_longitude"/>
+                                </group>
+                            </page>
+                            <page name="address" string="Address">
+                                <group col="2">
+                                    <group>
+                                        <field name="street" string="Street"/>
+                                        <field name="street2" string="Street 2"/>
+                                        <field name="city" string="City"/>
+                                        <field name="state_id" string="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                        <field name="zip" string="ZIP"/>
+                                        <field name="country_id" string="Country" options='{"no_open": True, "no_create": True}'/>
+                                    </group>
+                                    <group>
+                                        <field name="google_maps_url" widget="url"/>
+                                        <field name="partner_latitude"/>
+                                        <field name="partner_longitude"/>
+                                    </group>
                                 </group>
                             </page>
                             <page name="contacts_ids" string="Contacts">
