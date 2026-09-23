@@ -13,7 +13,7 @@
                     <field name="visitor_id" widget="many2one_avatar_user"/>
                     <field name="agent_id" widget="many2one_avatar_user" />
                     <field name="date" />
-                    <field name="stage_id" widget="badge" />
+                    <field name="stage_id" widget="badge" decoration-success="stage_id_code == 'done'" decoration-warning="stage_id_code == 'confirmed'" decoration-info="stage_id_code == 'draft'" decoration-danger="stage_id_code == 'canceled'"/>
                 </list>
             </field>
         </record>
@@ -100,7 +100,7 @@
                             <div class="oe_kanban_global_click">
                                 <div class="d-flex justify-content-between">
                                     <strong><field name="visitor_id"/></strong>
-                                    <field name="stage_id" widget="badge"/>
+                                    <field name="stage_id" widget="badge" decoration-success="stage_id_code == 'done'" decoration-warning="stage_id_code == 'confirmed'" decoration-info="stage_id_code == 'draft'" decoration-danger="stage_id_code == 'canceled'"/>
                                 </div>
                                 <div><field name="listing_id"/></div>
                                 <div><field name="property_id"/></div>
