@@ -75,10 +75,9 @@
                     <field name="sequence" widget="handle" />
                     <field name="ticket_ref_code" readonly="1"/>
                     <field name="ticket_type"/>
-                    <field name="responsible_id" domain="[('share', '=', False)]" />
+                    <field name="responsible_id" domain="[('share', '=', False)]" widget="many2one_avatar_user" />
                     <field name="description" />
                     <field name="priority" widget="priority"/>
-                    <field name="agent_id" />
                     <field name="state" widget="badge"
                            decoration-info="state == 'in_progress'"
                            decoration-success="state == 'done'"
