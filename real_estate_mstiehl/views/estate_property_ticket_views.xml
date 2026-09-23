@@ -2,6 +2,42 @@
 <odoo>
     <data>
 
+        <record id="estate_property_ticket_view_form" model="ir.ui.view">
+            <field name="name">estate.property.ticket.view.form</field>
+            <field name="model">estate.property.ticket</field>
+            <field name="arch" type="xml">
+                <form string="Real Estate Property Ticket">
+                    <header>
+                        <button name="action_in_progress" string="In Progress" type="object" class="oe_highlight" invisible="state != 'new'"/>
+                        <button name="action_done" string="Done" type="object" class="oe_highlight btn-success" invisible="state != 'in_progress'"/>
+                        <button name="action_canceled" string="Cancel" type="object" invisible="state in ('done', 'canceled')"/>
+                        <button name="action_new" string="Reset to New" type="object" invisible="state != 'canceled'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,in_progress,done" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <field name="ticket_ref_code" class="text-muted"/>
+                            <h1>
+                                <field name="name" placeholder="Ticket name..."/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group>
+                                <field name="property_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="responsible_id" domain="[('share', '=', False)]" />
+                            </group>
+                            <group>
+                                <field name="priority" widget="priority"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="estate_property_ticket_simple_view_list" model="ir.ui.view">
             <field name="name">estate.property.ticket.view.list</field>
             <field name="model">estate.property.ticket</field>
