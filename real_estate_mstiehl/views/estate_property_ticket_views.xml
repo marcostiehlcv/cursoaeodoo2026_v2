@@ -7,7 +7,8 @@
             <field name="model">estate.property.ticket</field>
             <field name="arch" type="xml">
                 <list string="Real Estate Property Tickets" default_order="id desc" editable="bottom">
-                    <field name="ticket_ref_code" readonly="1"/>                    
+                    <field name="ticket_ref_code" readonly="1"/>
+                    <field name="responsible_id" domain="[('share', '=', False)]" />              
                     <field name="description" />
                     <field name="priority" />
                     <field name="state" />
