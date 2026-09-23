@@ -10,10 +10,16 @@ class EstatePropertyTicket(models.Model):
     _rec_name = "name"
 
     name = fields.Char(string="Name", required=True, tracking=True, default="New")
+    sequence = fields.Integer(string="Sequence", default=1)
     ticket_ref_code = fields.Char(string="Ticket Code", store=True, tracking=True, readonly=True, default="New")
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", ondelete="cascade")
     responsible_id = fields.Many2one(comodel_name="res.users", string="Responsible", tracking=True)
     description = fields.Text(string="Description", required=True)
+    ticket_type = fields.Selection([
+        ("issue", "Issue"),
+        ("request", "Request"),
+        ("task", "Task")
+    ], string="Ticket Type", default="issue", tracking=True)
     priority = fields.Selection([
         ("1", "Low"),
         ("2", "Medium"),
