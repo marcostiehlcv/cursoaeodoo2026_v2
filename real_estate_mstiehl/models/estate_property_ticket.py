@@ -10,7 +10,7 @@ class EstatePropertyTicket(models.Model):
     _rec_name = "name"
 
     name = fields.Char(string="Name", required=True, tracking=True, default="New")
-    ticket_ref_code = fields.Char(string="Ticket Code", store=True, tracking=True, readonly=True)
+    ticket_ref_code = fields.Char(string="Ticket Code", store=True, tracking=True, readonly=True, default="New")
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", ondelete="cascade")
     responsible_id = fields.Many2one(comodel_name="res.users", string="Responsible", tracking=True)
     description = fields.Text(string="Description", required=True)
