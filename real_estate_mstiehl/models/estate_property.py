@@ -17,7 +17,7 @@ class EstateProperty(models.Model):
     cunstruction_year = fields.Integer(string="Construction Year", tracking=True)
     
     seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
-    agent_id = fields.Many2one(comodel_name="res.partner", string="Agent", tracking=True)
+    agent_id = fields.Many2one(comodel_name="res.partner", domain="[('share', '=', False)]", string="Agent", tracking=True)
     
     google_maps_url = fields.Char(string="Google Maps URL")
     postcode = fields.Char(string="Postcode", tracking=True)
