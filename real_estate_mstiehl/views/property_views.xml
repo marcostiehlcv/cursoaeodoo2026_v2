@@ -65,9 +65,9 @@
                                     <field name="zip" placeholder="ZIP" class="o_address_zip"/>
                                     <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
                                 </div>
-                                <field name="google_maps_url" widget="url"/>
-                                <field name="partner_latitude"/>
-                                <field name="partner_longitude"/>
+                                <group><field name="google_maps_url" widget="url"/></group>
+                                <group><field name="partner_latitude"/></group>
+                                <group><field name="partner_longitude"/></group>
                             </group>
                             <group string="Pricing">
                                 <field name="expected_price" />
