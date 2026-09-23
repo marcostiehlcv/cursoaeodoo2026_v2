@@ -1,8 +1,10 @@
 <odoo>
     <data>
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
-        <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_root" sequence="20"/>
+        <menuitem id="estate_menu_properties" name="Properties" parent="estate_menu_root" sequence="20"/>
+        <menuitem id="estate_menu_properties" action="estate_property_view_action" name="Properties" parent="estate_menu_properties" sequence="20"/>
         <menuitem id="estate_menu_property_tickets" action="estate_property_ticket_view_action" name="Property Tickets" parent="estate_menu_properties" sequence="10"/>
+
 
         <menuitem id="estate_menu_listing_root" name="Listings" parent="estate_menu_root" sequence="30"/>
         <menuitem id="estate_menu_listing" action="estate_listing_view_action" name="Listings" parent="estate_menu_listing_root" sequence="10"/>

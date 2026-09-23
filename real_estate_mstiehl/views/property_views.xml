@@ -127,6 +127,9 @@
                                     </form>
                                 </field>
                             </page>
+                            <page name="ticket_ids" string="Tickets">
+                                <field name="ticket_ids" context="{'list_view_ref': 'real_estate_mstiehl.estate_property_ticket_simple_view_list', 'default_property_id': active_id}" />
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

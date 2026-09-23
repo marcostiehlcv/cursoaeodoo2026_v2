@@ -56,6 +56,7 @@ class EstateProperty(models.Model):
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     gallery_ids = fields.One2many(comodel_name="estate.property.gallery", inverse_name="property_id", string="Gallery")
     contacts_ids = fields.One2many(comodel_name="estate.property.contacts", inverse_name="property_id", string="Contacts")
+    ticket_ids = fields.One2many(comodel_name="estate.property.ticket", inverse_name="property_id", string="Tickets")
     
     active = fields.Boolean(string="Active", default=True, tracking=True)
     available = fields.Boolean(string="Available", default=True, tracking=True)
