@@ -12,7 +12,7 @@
                     <field name="listing_id" widget="many2one_avatar" />
                     <field name="partner_id" />
                     <field name="price" />
-                    <field name="state" widget="badge"/>
+                    <field name="state" widget="badge" decoration-success="state == 'accepted'" decoration-danger="state == 'refused'" />
                 </list>
             </field>
         </record>
