@@ -11,7 +11,7 @@ class EstateVisit(models.Model):
     property_id = fields.Many2one(comodel_name="estate.property",string="Property",related="listing_id.property_id",store=True,readonly=True)
     visitor_id = fields.Many2one(comodel_name="res.partner", string="Visitor")
     visitor_phone = fields.Char(string="Visitor Phone", related="visitor_id.phone", store=True, readonly=True)
-    date = fields.Date(string="Date", default=fields.Date.today())
+    date = fields.Datetime(string="Date", default=lambda self: datetime.now())
     note = fields.Text(string="Note")
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", default=lambda self: self.env.user)
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
