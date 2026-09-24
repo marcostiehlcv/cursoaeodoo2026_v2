@@ -43,8 +43,15 @@ class EstateListing(models.Model):
     def _compute_next_visit_date(self):
         today = fields.Datetime.to_datetime(fields.Date.today())
         for record in self:
-            upcoming = record.visit_ids.filtered(lambda v: v.stage_id_code == 'confirmed' and v.date and v.date >= today)
-            record.next_visit_date = min(upcoming.mapped('date')) if upcoming else False
+            if not record._origin.id:
+                record.next_visit_date = False
+                continue
+            next_visit = self.env['estate.property.visit'].search([
+                ('listing_id', '=', record._origin.id),
+                ('stage_id_code', '=', 'confirmed'),
+                ('date', '>=', today),
+            ], order='date asc', limit=1)
+            record.next_visit_date = next_visit.date
 
     @api.depends('contract_ids')
     def _compute_contract_count(self):
