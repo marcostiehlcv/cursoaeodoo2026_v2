@@ -37,12 +37,12 @@ class EstateListing(models.Model):
 
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
-    next_visit_date = fields.Date(string="Next Visit Date", compute="_compute_next_visit_date", store=True)
+    next_visit_date = fields.Datetime(string="Next Visit Date", compute="_compute_next_visit_date", store=True)
     
     @api.depends('visit_ids')
     def _compute_next_visit_date(self):
         for record in self:
-            record.next_visit_date = self.env['estate.property.visit'].search([('listing_id', '=', record.id)], order='date asc', limit=1)
+            next_visit = self.env['estate.property.visit'].search([('listing_id', '=', record.id), ('stage_id_code', '=', 'confirmed'), ('date', '>=', fields.Date.today())], order='date asc', limit=1)
 
     @api.depends('contract_ids')
     def _compute_contract_count(self):
