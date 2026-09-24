@@ -77,7 +77,7 @@
         <field name="model">estate.listing</field>
         <field name="arch" type="xml">
             <form string="Estate Listing">
-                <field name="num_pending_visits" readonly="True"/>
+                <field name="num_pending_visits" invisible="1"/>
                 <header>
                     <button name="action_create_visit" string="Create Visit" type="object" class="oe_highlight" />
                     <button name="action_cancel_all_visits" string="Cancel All Visits" type="object" class="oe_highlight" invisible="num_pending_visits == 0"/>

@@ -40,7 +40,7 @@ class EstateListing(models.Model):
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
     next_visit_date = fields.Datetime(string="Next Visit Date", readonly=True, compute="_compute_next_visit_date", store=True)
-    num_pending_visits = fields.Integer(string="Number of Pending Visits", compute="_compute_next_visit_date", store=True)
+    num_pending_visits = fields.Integer(string="Number of Pending Visits", compute="_compute_num_pending_visits", store=True)
     
     
 
