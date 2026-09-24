@@ -31,6 +31,7 @@ class EstateListing(models.Model):
     active = fields.Boolean(string="Active", default=True)
     tags_ids = fields.Many2many(comodel_name="estate.tag", string="Tags")
     offer_ids = fields.One2many(comodel_name="estate.listing.offer", inverse_name="listing_id", string="Offers")
+    visit_ids = fields.One2many(comodel_name="estate.property.visit", inverse_name="listing_id", string="Visits")
     contract_ids = fields.One2many(comodel_name="estate.contract", inverse_name="listing_id", string="Contracts")
     contract_count = fields.Integer(string="Contract Count", compute="_compute_contract_count")
 
