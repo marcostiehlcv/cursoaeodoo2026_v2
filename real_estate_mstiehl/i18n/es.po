@@ -142,7 +142,6 @@ msgstr "Cancelada"
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_contract__state__canceled
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_listing__state__canceled
-#: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__canceled
 msgid "Canceled"
 msgstr "Cancelada"
 
@@ -166,11 +165,6 @@ msgstr "Color"
 #. module: real_estate_mstiehl
 #: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
 msgid "Confirm"
-msgstr "Confirmada"
-
-#. module: real_estate_mstiehl
-#: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__confirmed
-msgid "Confirmed"
 msgstr "Confirmada"
 
 #. module: real_estate_mstiehl
@@ -383,7 +377,6 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: real_estate_mstiehl
-#: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__done
 #: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
 msgid "Done"
 msgstr "Realizada"
@@ -391,7 +384,6 @@ msgstr "Realizada"
 #. module: real_estate_mstiehl
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_contract__state__draft
 #: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_listing__state__draft
-#: model:ir.model.fields.selection,name:real_estate_mstiehl.selection__estate_property_visit__state__draft
 #: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_form
 msgid "Draft"
 msgstr "Borrador"
@@ -1016,7 +1008,6 @@ msgstr "Fecha de inicio"
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__state
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing_offer__state
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property__state_id
-#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__state
 #: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_view_form
 msgid "State"
 msgstr "Estado"

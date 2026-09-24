@@ -15,7 +15,6 @@ class EstateVisit(models.Model):
     note = fields.Text(string="Note")
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", default=lambda self: self.env.user)
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
-    state = fields.Selection(selection=[('draft', 'Draft'), ('confirmed', 'Confirmed'), ('done', 'Done'), ('canceled', 'Canceled')], string="State", default="draft")
     date_confirmed = fields.Date(string="Date Confirmed", readonly=True)
     date_done = fields.Date(string="Date Done", readonly=True)
     date_canceled = fields.Date(string="Date Canceled", readonly=True)
@@ -29,23 +28,19 @@ class EstateVisit(models.Model):
     def action_done(self):
         for record in self:
             record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'done')], limit=1)
-            record.state = "done"
             record.date_done = fields.Date.today()
             
     def action_canceled(self):
         for record in self:
             record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'canceled')], limit=1)
-            record.state = "canceled"
             record.date_canceled = fields.Date.today()
     
     def action_confirmed(self):
         for record in self:
             record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'confirmed')], limit=1)
-            record.state = "confirmed"
             record.date_confirmed = fields.Date.today()
     
     def action_draft(self):
         for record in self:
             record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'draft')], limit=1)
-            record.state = "draft"
             record.date_confirmed = False
