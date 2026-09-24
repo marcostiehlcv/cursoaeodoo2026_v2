@@ -42,7 +42,7 @@ class EstateListing(models.Model):
     @api.depends('visit_ids.date')
     def _compute_next_visit_date(self):
         for record in self:
-            record.next_visit_date = self.env['estate.property.visit'].search([('listing_id', '=', record.id), ('stage_id_code', '=', 'confirmed'), ('date', '=', record.id), ('date', '>=', fields.Date.today())], order='date asc', limit=1)
+            record.next_visit_date = self.env['estate.property.visit'].search([('listing_id', '=', record.id), ('stage_id_code', '=', 'confirmed'),], order='date asc', limit=1)
 
     @api.depends('contract_ids')
     def _compute_contract_count(self):
