@@ -70,6 +70,7 @@
                     <group> <field name="description" /> </group>
                     <notebook>
                         <page name="visits" string="Visits">
+                            <group> <field name="next_visit_date" /> </group>
                             <field name="visit_ids" context="{'list_view_ref': 'real_estate_mstiehl.estate_property_visit_view_list', 'default_listing_id': id, 'default_agent_id': agent_id}"/>
                         </page>
                         <page name="Offers" string="Offers">
