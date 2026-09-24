@@ -39,7 +39,7 @@ class EstateListing(models.Model):
     
     next_visit_date = fields.Date(string="Next Visit Date", compute="_compute_next_visit_date", store=True)
     
-    @api.depends('visit_ids.date')
+    @api.depends('visit_ids')
     def _compute_next_visit_date(self):
         for record in self:
             record.next_visit_date = self.env['estate.property.visit'].search([('listing_id', '=', record.id), ('stage_id_code', '=', 'confirmed'),], order='date asc', limit=1)
