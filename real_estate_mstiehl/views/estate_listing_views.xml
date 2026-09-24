@@ -69,8 +69,11 @@
                     </group>
                     <group> <field name="description" /> </group>
                     <notebook>
+                        <page name="visits" string="Visits">
+                            <field name="visit_ids" context="{'list_view_ref': 'real_estate_mstiehl.estate_property_visit_view_list', 'default_listing_id': id, 'default_agent_id': agent_id}"/>
+                        </page>
                         <page name="Offers" string="Offers">
-                            <field name="offer_ids" >
+                            <field name="offer_ids" editable="bottom">
                                 <list editable="bottom">
                                     <field name="partner_id"  widget="many2one_avatar_user"/>
                                     <field name="price" />
