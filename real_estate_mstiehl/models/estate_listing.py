@@ -19,7 +19,9 @@ class EstateListing(models.Model):
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     expected_price = fields.Float(string="Expected Price", default=0.0, tracking=True)
     selling_price = fields.Float(string="Selling Price", default=0.0, readonly=True, tracking=True)
-    state = fields.Selection(selection=[('draft', 'Draft'), ('published', 'Published'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('reserved', 'Reserved'), ('sold', 'Sold'), ('canceled', 'Canceled')], string="State", default="draft")
+    state = fields.Selection(selection=[('draft', 'Draft'), ('published', 'Published'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('reserved', 'Reserved'), ('sold', 'Sold'), ('canceled', 'Canceled')], string="State", default="draft", group_expand="_expand_states")
+    color = fields.Integer(string="Color", default=0)
+    property_image = fields.Image(string="Property Image", related="property_id.image_1920")
     date_register = fields.Date(string="Date Register", default=fields.Date.today())
     date_published = fields.Date(string="Date Published", readonly=True)
     date_offer_received = fields.Date(string="Date Offer Received", readonly=True)
@@ -52,6 +54,9 @@ class EstateListing(models.Model):
                 ('date', '>=', today),
             ], order='date asc', limit=1)
             record.next_visit_date = next_visit.date
+
+    def _expand_states(self, states, domain):
+        return [key for key, _label in self._fields['state'].selection]
 
     @api.depends('contract_ids')
     def _compute_contract_count(self):

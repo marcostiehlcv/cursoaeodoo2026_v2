@@ -158,6 +158,7 @@ msgid "Code"
 msgstr "Código"
 
 #. module: real_estate_mstiehl
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__color
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_tag__color
 msgid "Color"
 msgstr "Color"
@@ -1146,3 +1147,47 @@ msgstr "C.P."
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property__zip
 msgid "Zip"
 msgstr "Código postal"
+
+#. module: real_estate_mstiehl
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__property_image
+msgid "Property Image"
+msgstr "Imagen de la propiedad"
+
+#. module: real_estate_mstiehl
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__next_visit_date
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Next Visit Date"
+msgstr "Fecha de la próxima visita"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_form
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Accept Best Offer"
+msgstr "Aceptar la mejor oferta"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Expected:"
+msgstr "Esperado:"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Selling:"
+msgstr "Venta:"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Are you sure you want to mark this listing as sold? A contract will be created."
+msgstr "¿Seguro que quieres marcar este anuncio como vendido? Se creará un contrato."
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_kanban
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Edit"
+msgstr "Editar"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_kanban
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
+msgid "Delete"
+msgstr "Eliminar"
