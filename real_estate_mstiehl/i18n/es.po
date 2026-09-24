@@ -91,6 +91,7 @@ msgstr "Administrador"
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_contract__agent_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__agent_id
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing_offer__agent_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property__agent_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__agent_id
 msgid "Agent"
@@ -159,6 +160,7 @@ msgstr "Código"
 
 #. module: real_estate_mstiehl
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__color
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing_offer__color
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_tag__color
 msgid "Color"
 msgstr "Color"
@@ -852,6 +854,7 @@ msgstr "Propiedades"
 #: model:ir.model,name:real_estate_mstiehl.model_estate_property
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_contract__property_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing__property_id
+#: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_listing_offer__property_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_contacts__property_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_gallery__property_id
 #: model:ir.model.fields,field_description:real_estate_mstiehl.field_estate_property_visit__property_id
@@ -1191,3 +1194,34 @@ msgstr "Editar"
 #: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.view_estate_listing_kanban
 msgid "Delete"
 msgstr "Eliminar"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_listing_offer_view_search
+msgid "My Offers"
+msgstr "Mis ofertas"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_listing_offer_view_search
+msgid "Expiring This Week"
+msgstr "Vencen esta semana"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_listing_offer_view_search
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_property_visit_view_search
+msgid "Status"
+msgstr "Estado"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.ui.view,arch_db:real_estate_mstiehl.estate_listing_offer_view_kanban
+msgid "Valid Until"
+msgstr "Válida hasta"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.actions.act_window,help:real_estate_mstiehl.estate_listing_offer_view_action
+msgid "No offers yet"
+msgstr "Todavía no hay ofertas"
+
+#. module: real_estate_mstiehl
+#: model_terms:ir.actions.act_window,help:real_estate_mstiehl.estate_listing_offer_view_action
+msgid "Offers are registered from each listing."
+msgstr "Las ofertas se registran desde cada anuncio."

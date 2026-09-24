@@ -77,8 +77,10 @@
         <field name="model">estate.listing</field>
         <field name="arch" type="xml">
             <form string="Estate Listing">
+                <field name="num_pending_visits" readonly="True"/>
                 <header>
                     <button name="action_create_visit" string="Create Visit" type="object" class="oe_highlight" />
+                    <button name="action_cancel_all_visits" string="Cancel All Visits" type="object" class="oe_highlight" invisible="num_pending_visits == 0"/>
                     <button name="action_accept_best_offer" type="object" string="Accept Best Offer" class="btn-primary"
                             invisible="state != 'offer_received'"/>
                     <button name="action_reserved" type="object" string="Reserved" class="btn-primary"

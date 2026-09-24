@@ -40,6 +40,9 @@ class EstateListing(models.Model):
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
     next_visit_date = fields.Datetime(string="Next Visit Date", readonly=True, compute="_compute_next_visit_date", store=True)
+    num_pending_visits = fields.Integer(string="Number of Pending Visits", compute="_compute_next_visit_date", store=True)
+    
+    
 
     @api.depends('visit_ids.stage_id', 'visit_ids.date')
     def _compute_next_visit_date(self):
@@ -54,6 +57,16 @@ class EstateListing(models.Model):
                 ('date', '>=', today),
             ], order='date asc', limit=1)
             record.next_visit_date = next_visit.date
+            
+    
+    @api.depends('visit_ids.stage_id', 'visit_ids.date')
+    def _compute_num_pending_visits(self):
+        for record in self:
+            pending_visits = self.env['estate.property.visit'].search([
+                ('listing_id', '=', record._origin.id),
+                ('stage_id_code', 'in', ('confirmed', 'draft')),
+            ])
+            record.num_pending_visits = len(pending_visits)
 
     def _expand_states(self, states, domain):
         return [key for key, _label in self._fields['state'].selection]
@@ -138,6 +151,29 @@ class EstateListing(models.Model):
                 "sticky": False,
             },
         }
+        
+    def action_cancel_all_visits(self):
+        self.ensure_one()
+        canceled = self.browse()
+        try:
+            for record in self:
+                visits_to_cancel = self.env["estate.property.visit"].search([("listing_id", "=", record.id), ("stage_id_code", "not in", ["done", "canceled"])])
+                visits_to_cancel.action_canceled()
+                canceled |= record
+        except Exception as error:
+            raise UserError(_("The visits could not be canceled: %s", error)) from error
+        if not canceled:
+            raise UserError(_("No visit was found to cancel."))
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Visits Canceled"),
+                "message": _("All visits were canceled successfully."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
 
     def action_accept_best_offer(self):
         accepted = self.browse()
@@ -177,7 +213,10 @@ class EstateListingOffer(models.Model):
     valid = fields.Boolean(string="Valid", default=True)
     valid_until = fields.Date(string="Date Valid", default=fields.Date.today() + timedelta(days=7))
     active = fields.Boolean(string="Active", default=True)
-    state = fields.Selection(selection=[('submitted', 'Submitted'), ('in_analysis', 'In Analysis'),('accepted', 'Accepted'), ('refused', 'Refused'), ('expired', 'Expired')], string="State", default="submitted")
+    property_id = fields.Many2one(comodel_name="estate.property", string="Property", related="listing_id.property_id", store=True, readonly=True)
+    agent_id = fields.Many2one(comodel_name="res.users", string="Agent", related="listing_id.agent_id", store=True, readonly=True)
+    color = fields.Integer(string="Color", default=0)
+    state = fields.Selection(selection=[('submitted', 'Submitted'), ('in_analysis', 'In Analysis'),('accepted', 'Accepted'), ('refused', 'Refused'), ('expired', 'Expired')], string="State", default="submitted", group_expand="_expand_states")
     date = fields.Date(string="Date", default=fields.Date.today())
     date_in_analysis = fields.Date(string="Date In Analysis")
     date_accepted = fields.Date(string="Date Accepted")
@@ -185,6 +224,9 @@ class EstateListingOffer(models.Model):
     date_expired = fields.Date(string="Date Expired")
     
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
+
+    def _expand_states(self, states, domain):
+        return [key for key, _label in self._fields['state'].selection]
 
     @api.model_create_multi
     def create(self, vals_list):
