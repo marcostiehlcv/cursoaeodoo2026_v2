@@ -28,19 +28,22 @@ class EstateVisit(models.Model):
         
     def action_done(self):
         for record in self:
-            record.state = "done"
+            record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'done')], limit=1)
             record.date_done = fields.Date.today()
             
     def action_canceled(self):
         for record in self:
+            record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'canceled')], limit=1)
             record.state = "canceled"
             record.date_canceled = fields.Date.today()
     
     def action_confirmed(self):
         for record in self:
-            record.state = "confirmed"
+            record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'confirmed')], limit=1)
             record.date_confirmed = fields.Date.today()
     
     def action_draft(self):
         for record in self:
+            record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'draft')], limit=1)
             record.state = "draft"
+            record.date_confirmed = False
