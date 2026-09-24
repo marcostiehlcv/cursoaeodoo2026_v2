@@ -37,7 +37,7 @@ class EstateListing(models.Model):
 
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
     
-    next_visit_date = fields.Datetime(string="Next Visit Date", compute="_compute_next_visit_date", store=True)
+    next_visit_date = fields.Char(string="Next Visit Date", readonly=True, compute="_compute_next_visit_date", store=True)
     
     @api.depends('visit_ids')
     def _compute_next_visit_date(self):
