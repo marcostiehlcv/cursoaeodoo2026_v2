@@ -37,7 +37,7 @@
                     <sheet>
                         <div name="button_box" position="inside">
                             <button class="oe_stat_button" type="object"
-                                name="action_view_visits"
+                                name="action_view_property_tickets"
                                 icon="fa-home">
                                 <field string="Tickets" name="num_tickets" widget="statinfo"/>
                             </button>

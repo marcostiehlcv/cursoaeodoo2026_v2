@@ -112,7 +112,7 @@ class EstateProperty(models.Model):
             },
         }
         
-    def action_view_tickets(self):
+    def action_view_property_tickets(self):
         """
         This function returns an action that displays the tickets of the property."""
         self.ensure_one()
