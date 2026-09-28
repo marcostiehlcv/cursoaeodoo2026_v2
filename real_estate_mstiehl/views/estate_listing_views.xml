@@ -131,7 +131,7 @@
                             <field name="offer_ids" editable="bottom">
                                 <list editable="bottom">
                                     <field name="partner_id"  widget="many2one_avatar_user"/>
-                                    <field name="price" />
+                                    <field name="offer_value" />
                                     <field name="state" widget="badge" decoration-info="state in ('submitted', 'in_analysis')" decoration-success="state == 'accepted'" decoration-danger="state in ('refused', 'expired')"/>
                                     <button name="action_accepted" type="object" icon="fa-check"
                                             string="Accept" class="text-success" title="Accept this field"

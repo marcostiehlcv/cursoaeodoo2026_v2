@@ -1,7 +1,8 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from datetime import datetime
 from datetime import timedelta
+
 
 class EstateListing(models.Model):
     _name = "estate.listing"
@@ -209,7 +210,7 @@ class EstateListingOffer(models.Model):
     
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing")
     partner_id = fields.Many2one(comodel_name="res.partner", string="Partner")
-    price = fields.Float(string="Price", default=0.0)
+    offer_value = fields.Float(string="Offer", default=0.0)
     valid = fields.Boolean(string="Valid", default=True)
     valid_until = fields.Date(string="Date Valid", default=fields.Date.today() + timedelta(days=7))
     active = fields.Boolean(string="Active", default=True)
@@ -224,6 +225,12 @@ class EstateListingOffer(models.Model):
     date_expired = fields.Date(string="Date Expired")
     
     user_id = fields.Many2one(comodel_name="res.users", string="User", default=lambda self: self.env.user)
+    
+    @api.constrains('offer_value')
+    def _check_offer_value(self):
+        for record in self:
+            if record.offer_value <= 0:
+                raise ValidationError(_("The offer value must be greater than zero."))
 
     def _expand_states(self, states, domain):
         return [key for key, _label in self._fields['state'].selection]
