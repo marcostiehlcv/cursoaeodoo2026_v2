@@ -11,6 +11,7 @@
         "security/real_estate_security.xml",
         "security/ir_rules.xml",
         "security/ir.model.access.csv",
+        "data/estate_data.xml",
         "views/estate_listing_views.xml",
         "views/estate_contract_views.xml",
         "views/estate_contract_type_views.xml",
