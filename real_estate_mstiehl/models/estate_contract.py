@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from datetime import datetime
 from datetime import timedelta
+from odoo.exceptions import ValidationError
 
 class EstateContract(models.Model):
     _name = "estate.contract"
@@ -73,6 +74,14 @@ class EstateContract(models.Model):
                 record.duration_days = delta.days
             else:
                 record.duration_days = 0
+                
+                
+    @api.constrains('date_start', 'date_end')
+    def _check_date_range(self):
+        for record in self:
+            if record.date_start and record.date_end:
+                if record.date_start > record.date_end:
+                    raise ValidationError(_("The start date must be before the end date."))
 
     @api.model_create_multi
     def create(self, vals_list):

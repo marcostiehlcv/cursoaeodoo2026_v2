@@ -63,6 +63,11 @@ class EstateProperty(models.Model):
     gallery_ids = fields.One2many(comodel_name="estate.property.gallery", inverse_name="property_id", string="Gallery", ondelete="cascade")
     contacts_ids = fields.One2many(comodel_name="estate.property.contacts", inverse_name="property_id", string="Contacts", ondelete="cascade")
     ticket_ids = fields.One2many(comodel_name="estate.property.ticket", inverse_name="property_id", string="Tickets", ondelete="cascade")
+    num_tickets = fields.Integer(string="Number of Tickets", compute="_compute_num_tickets", store=True)
+    
+    def _compute_num_tickets(self):
+        for record in self:
+            record.num_tickets = len(record.ticket_ids)    
     
     active = fields.Boolean(string="Active", default=True, tracking=True)
     available = fields.Boolean(string="Available", default=True, tracking=True)
@@ -106,6 +111,19 @@ class EstateProperty(models.Model):
                 "sticky": False,
             },
         }
+        
+    def action_view_tickets(self):
+        """
+        This function returns an action that displays the tickets of the property."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "estate.property.ticket",
+            "name": _("Tickets"),
+            "views": [[False, "list"], [False, "form"]],
+            "domain": [('property_id', '=', self.id)],
+        }
+    
 
 class EstatePropertyType(models.Model):
     _name = "estate.property.type"
