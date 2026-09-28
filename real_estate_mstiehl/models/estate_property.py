@@ -63,10 +63,11 @@ class EstateProperty(models.Model):
     gallery_ids = fields.One2many(comodel_name="estate.property.gallery", inverse_name="property_id", string="Gallery", ondelete="cascade")
     contacts_ids = fields.One2many(comodel_name="estate.property.contacts", inverse_name="property_id", string="Contacts", ondelete="cascade")
     ticket_ids = fields.One2many(comodel_name="estate.property.ticket", inverse_name="property_id", string="Tickets", ondelete="cascade")
-    num_tickets = fields.Integer(string="Number of Tickets", compute="_compute_num_tickets", store=True)
+    num_tickets = fields.Integer(string="Number of Tickets", compute="_compute_num_tickets")
     
     def _compute_num_tickets(self):
         for record in self:
+            print(record.ticket_ids)
             record.num_tickets = len(record.ticket_ids)    
     
     active = fields.Boolean(string="Active", default=True, tracking=True)
