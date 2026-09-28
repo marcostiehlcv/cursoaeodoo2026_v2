@@ -12,6 +12,12 @@ class EstateContract(models.Model):
     listing_id = fields.Many2one(comodel_name="estate.listing", string="Listing", tracking=True)
     property_id = fields.Many2one(comodel_name="estate.property",string="Property",related="listing_id.property_id",store=True,readonly=True)
     contract_ref_code = fields.Char(string="Contract Code", store=True, tracking=True, readonly=True, default="New")
+    
+    _unique_contract_ref_code = models.Constraint(
+        'UNIQUE(contract_ref_code)', 
+        _("This contract code is already registered!")
+    )    
+    
     offer_id = fields.Many2one(comodel_name="estate.listing.offer", string="Offer", tracking=True)
     type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")
     description = fields.Text(string="Description", tracking=True)

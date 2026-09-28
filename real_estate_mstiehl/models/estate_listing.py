@@ -14,6 +14,12 @@ class EstateListing(models.Model):
     name = fields.Char(string="Name", required=True, default="New")
     property_id = fields.Many2one(comodel_name="estate.property", string="Property", tracking=True)
     listing_ref_code = fields.Char(string="Listing Code", store=True, tracking=True, readonly=True)
+    
+    _unique_listing_ref_code = models.Constraint(
+        'UNIQUE(listing_ref_code)', 
+        _("This listing code is already registered!")
+    )    
+    
     type_id = fields.Many2one(comodel_name="estate.contract.type", string="Type")
     description = fields.Text(string="Description", tracking=True)
     seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
