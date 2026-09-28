@@ -44,3 +44,8 @@ class EstateVisit(models.Model):
         for record in self:
             record.stage_id = self.env['estate.stage'].search([('type_id.code', '=', 'visit'), ('code', '=', 'draft')], limit=1)
             record.date_confirmed = False
+
+    @api.model
+    def _cron_done_past_visits(self):
+        visits = self.search([('stage_id_code', '=', 'confirmed'), ('date', '<', fields.Datetime.now())])
+        visits.action_done()
