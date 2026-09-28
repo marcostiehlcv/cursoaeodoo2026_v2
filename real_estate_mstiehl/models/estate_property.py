@@ -123,6 +123,7 @@ class EstateProperty(models.Model):
             "name": _("Tickets"),
             "views": [[False, "list"], [False, "form"]],
             "domain": [('property_id', '=', self.id)],
+            'context': {'default_property_id': self.id},
         }
     
 
