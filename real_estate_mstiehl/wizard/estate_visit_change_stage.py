@@ -8,6 +8,6 @@ class EstateVisitChangeState(models.TransientModel):
     
     stage_id = fields.Many2one(comodel_name="estate.stage", string="Stage", domain="[('type_id.code','=','visit')]", required=True)
 
-    def action_done(self):
+    def action_change_visit_stage(self):
         for visit in self.env['estate.property.visit'].browse(self.env.context.get('active_ids')):
-            visit.action_done()
+            visit.stage_id = self.stage_id

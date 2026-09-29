@@ -15,7 +15,11 @@
             <field name="arch" type="xml">
                 <form string="Invoice Sales Order">
                     <field name="stage_id"/>                    
-                    <footer>                        
+                    <footer>     
+                        <button name="action_change_visit_stage" type="object"
+                        id="action_change_visit_stage"
+                        string="Change Visits Stage"
+                        class="btn-primary" data-hotkey="q"/>
                         <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
                     </footer>
                 </form>
