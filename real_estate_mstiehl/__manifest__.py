@@ -13,6 +13,7 @@
         "security/ir.model.access.csv",
         "data/estate_data.xml",
         "data/estate_cron.xml",
+        "wizard/estate_visit_schedule.xml",
         "views/estate_listing_views.xml",
         "views/estate_contract_views.xml",
         "views/estate_contract_type_views.xml",

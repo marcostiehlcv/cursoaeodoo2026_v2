@@ -40,7 +40,8 @@
                             <field name="property_id"/>
                             <field name="visitor_id" widget="many2one_avatar_user" />
                             <field name="agent_id" widget="many2one_avatar_user" />
-                            <field name="date" />
+                            <field name="date" string="Dates" widget="daterange" options="{'end_date_field': 'date_end'}"/>
+                            <field name="date_end" invisible="1"/>
                         </group>
                     </sheet>
                 </form>
@@ -142,7 +143,7 @@
             <field name="name">estate.property.visit.view.calendar</field>
             <field name="model">estate.property.visit</field>
             <field name="arch" type="xml">
-                <calendar string="Real Estate Property Visit" date_start="date" color="color">
+                <calendar string="Real Estate Property Visit" date_start="date" date_stop="date_end" color="color">
                     <field name="listing_id"/>
                     <field name="property_id"/>
                     <field name="visitor_id"/>
