@@ -8,9 +8,10 @@
             <field name="arch" type="xml">
                 <form string="Schedule Visit">
                     <group>
+                        <field name="listing_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
                         <group>
-                            <field name="listing_id" readonly="1"/>
-                            <field name="property_id"/>
                             <field name="agent_id" widget="many2one_avatar_user"/>
                             <field name="visitor_id" widget="many2one_avatar"/>
                         </group>
@@ -35,7 +36,7 @@
             <field name="target">new</field>
         </record>
 
-        <!-- Action Stages  Type -->
+        <!-- Action from Listings list/form: schedule the same visit for multiple listings -->
         <record id="estate_visit_schedule_settings_action" model="ir.actions.act_window">
             <field name="name">Schedule Visit</field>
             <field name="res_model">estate.visit.schedule</field>
