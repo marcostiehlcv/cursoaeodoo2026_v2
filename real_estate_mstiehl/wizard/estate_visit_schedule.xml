@@ -35,5 +35,15 @@
             <field name="target">new</field>
         </record>
 
+        <!-- Action Stages  Type -->
+        <record id="estate_visit_schedule_settings_action" model="ir.actions.act_window">
+            <field name="name">Schedule Visit</field>
+            <field name="res_model">estate.visit.schedule</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="real_estate_mstiehl.model_estate_listing"/>
+            <field name="binding_view_types">list,form</field>
+        </record>
+
     </data>
 </odoo>
