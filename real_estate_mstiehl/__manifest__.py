@@ -22,6 +22,7 @@
         "views/estate_property_visit_views.xml",
         "views/estate_property_ticket_views.xml",
         "views/property_views.xml",
+        "wizard/estate_visit_change_state.xml",
         "menu/menu.xml"
     ],
     'installable': True,
