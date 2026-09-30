@@ -2,25 +2,96 @@
 <odoo>
     <record id="action_report_estate_property" model="ir.actions.report">
         <field name="name">Property</field>
-        <field name="model">estate.</field>
+        <field name="model">estate.property</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">real_estate_mstiehl.estate_property_rerpot</field>
-        <field name="report_file">real_estate_mstiehl.estate_property_rerpot</field>
-        <!-- <field name="paperformat_id" ref="hr.paperformat_hr_employee_badge"/> -->
+        <field name="report_name">real_estate_mstiehl.estate_property_report</field>
+        <field name="report_file">real_estate_mstiehl.estate_property_report</field>
         <field name="print_report_name">'Property - %s' % (object.property_ref_code)</field>
         <field name="binding_model_id" ref="model_estate_property"/>
         <field name="binding_type">report</field>
     </record>
 
-
     <template id="estate_property_report" name="Estate Property Report">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
-                    Teste <span t-field="o.property_ref_code" />
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2 t-field="o.name"/>
+                                <p class="text-muted" t-field="o.property_ref_code"/>
+                            </div>
+                            <div class="col-6 text-end">
+                                <img t-if="o.image_1920" t-att-src="image_data_uri(o.image_1920)" style="max-height: 120px;"/>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <strong>Type</strong>
+                                <p t-field="o.property_type_id"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Expected Price</strong>
+                                <p t-field="o.expected_price"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Selling Price</strong>
+                                <p t-field="o.selling_price"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <strong>Total Area</strong>
+                                <p t-field="o.total_area"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Bedrooms</strong>
+                                <p t-field="o.bedrooms"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Bathrooms</strong>
+                                <p t-field="o.bathrooms"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Garage</strong>
+                                <p t-field="o.garage"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <strong>Address</strong>
+                                <p>
+                                    <span t-field="o.street"/><br/>
+                                    <span t-field="o.zip"/> <span t-field="o.city"/><br/>
+                                    <span t-field="o.state_id"/> <span t-field="o.country_id"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Seller</strong>
+                                <p t-field="o.seller_id"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Agent</strong>
+                                <p t-field="o.agent_id"/>
+                            </div>
+                        </div>
+
+                        <div class="row" t-if="o.description">
+                            <div class="col-12">
+                                <strong>Description</strong>
+                                <p t-field="o.description"/>
+                            </div>
+                        </div>
+                    </div>
                 </t>
             </t>
-        </t>       
+        </t>
     </template>
 
 </odoo>
