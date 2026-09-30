@@ -2,7 +2,6 @@
 <odoo>
 
 
-
     <record id="action_report_estate_property_details" model="ir.actions.report">
         <field name="name">Print Property (Each Page)</field>
         <field name="model">estate.property</field>
@@ -114,7 +113,7 @@
             <t t-call="web.external_layout">
                 <div class="page">
                     <h2>Properties</h2>
-                    <table class="table table-sm table-bordered">
+                    <table class="table table-sm">
                         <thead>
                             <tr>
                                 <th>Code</th>
