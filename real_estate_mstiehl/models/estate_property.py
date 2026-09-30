@@ -125,6 +125,10 @@ class EstateProperty(models.Model):
             "domain": [('property_id', '=', self.id)],
             'context': {'default_property_id': self.id},
         }
+        
+    def action_print_property(self):
+        self.ensure_one()
+        return self.env.ref('real_estate_mstiehl.action_report_estate_property_details').report_action(self)
     
 
 class EstatePropertyType(models.Model):
