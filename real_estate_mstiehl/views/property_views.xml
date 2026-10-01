@@ -39,12 +39,12 @@
                         <div name="button_box" position="inside">
                             <button class="oe_stat_button" type="object"
                                 name="action_view_property_tickets"
-                                icon="fa-triangle-exclamation">
+                                icon="fa-exclamation-triangle">
                                 <field string="Tickets" name="num_tickets" widget="statinfo"/>
                             </button>
                             <button class="oe_stat_button" type="object"
                                 name="action_view_property_contracts"
-                                icon="fa-file">
+                                icon="fa-file-pdf-o">
                                 <field string="Contracts" name="num_contracts" widget="statinfo"/>
                             </button>
                         </div>
