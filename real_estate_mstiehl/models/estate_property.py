@@ -65,6 +65,13 @@ class EstateProperty(models.Model):
     ticket_ids = fields.One2many(comodel_name="estate.property.ticket", inverse_name="property_id", string="Tickets", ondelete="cascade")
     num_tickets = fields.Integer(string="Number of Tickets", compute="_compute_num_tickets")
     
+    contracts_ids = fields.One2many(comodel_name="estate.contract", inverse_name="property_id", string="Contracts", ondelete="cascade")
+    num_contracts = fields.Integer(string="Number of Contracts", compute="_compute_num_contracts")
+    
+    def _compute_num_contracts(self):
+        for record in self:
+            record.num_contracts = len(record.contracts_ids)
+    
     def _compute_num_tickets(self):
         for record in self:
             print(record.ticket_ids)
@@ -129,6 +136,21 @@ class EstateProperty(models.Model):
     def action_print_property(self):
         self.ensure_one()
         return self.env.ref('real_estate_mstiehl.action_report_estate_property_details').report_action(self)
+    
+    
+    def action_view_property_contracts(self):
+        """
+        This function returns an action that displays the contracts of the property."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "estate.contract",
+            "name": _("Contracts"),
+            "views": [[False, "list"], [False, "form"]],
+            "domain": [('property_id', '=', self.id)],
+            'context': {'default_property_id': self.id},
+        }
+        
     
 
 class EstatePropertyType(models.Model):

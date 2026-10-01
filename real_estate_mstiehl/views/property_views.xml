@@ -42,6 +42,11 @@
                                 icon="fa-home">
                                 <field string="Tickets" name="num_tickets" widget="statinfo"/>
                             </button>
+                            <button class="oe_stat_button" type="object"
+                                name="action_view_property_contracts"
+                                icon="fa-home">
+                                <field string="Contracts" name="num_contracts" widget="statinfo"/>
+                            </button>
                         </div>
                         <field name="image_1920" widget='image' class="oe_avatar"/>
                         <div class="oe_title">
