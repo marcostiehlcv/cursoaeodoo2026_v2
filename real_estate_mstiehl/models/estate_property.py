@@ -146,7 +146,7 @@ class EstateProperty(models.Model):
             "type": "ir.actions.act_window",
             "res_model": "estate.contract",
             "name": _("Contracts"),
-            "views": [[False, "list"], [False, "form"]],
+            "view_mode": "list,form",
             "domain": [('property_id', '=', self.id)],
             'context': {'default_property_id': self.id},
         }
