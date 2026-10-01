@@ -24,7 +24,7 @@
         "views/estate_property_visit_views.xml",
         "views/estate_property_ticket_views.xml",
         "views/property_views.xml",
-        "wizard/estate_visit_change_stage.xml",
+        "wizard/estate_visit_stage_update.xml",
         "report/estate_property_report.xml",
         "report/estate_contract_report.xml",
         "report/estate_listing_offers_report.xml",
