@@ -8,11 +8,7 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
             <field name="binding_model_id" ref="real_estate_mstiehl.model_estate_property_visit"/>
-            <field name="view_ids" eval="[
-                (5, 0, 0),
-                (0, 0, {'view_mode': 'list', 'view_id': ref('view_estate_visit_change_stage')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('view_estate_visit_change_stage')}),
-            ]"/>
+            <field name="view_id" ref="view_estate_visit_change_stage"/>
             <field name="binding_view_types">list,form</field>
         </record>
 
