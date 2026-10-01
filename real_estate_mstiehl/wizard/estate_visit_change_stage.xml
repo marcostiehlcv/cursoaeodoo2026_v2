@@ -7,8 +7,7 @@
             <field name="res_model">estate.visit.change.stage</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="binding_model_id" ref="real_estate_mstiehl.model_estate_property_visit"/>
-            <field name="view_id" ref="view_estate_visit_change_stage"/>
+            <field name="binding_model_id" ref="real_estate_mstiehl.model_estate_listing"/>
             <field name="binding_view_types">list,form</field>
         </record>
 
@@ -30,6 +29,7 @@
                 </form>
             </field>
         </record>
+
 
     </data>
 </odoo>
