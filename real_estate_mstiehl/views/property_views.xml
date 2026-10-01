@@ -44,7 +44,7 @@
                             </button>
                             <button class="oe_stat_button" type="object"
                                 name="action_view_property_contracts"
-                                icon="fa-home">
+                                icon="fa-file-o">
                                 <field string="Contracts" name="num_contracts" widget="statinfo"/>
                             </button>
                         </div>
