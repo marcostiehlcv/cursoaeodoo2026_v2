@@ -2,18 +2,18 @@
 <odoo>
 
     <record id="action_report_listing_offers" model="ir.actions.report">
-        <field name="name">Listing offers</field>
-        <field name="model">estate.listing.offer</field>
+        <field name="name">Listing Offers</field>
+        <field name="model">estate.listing</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">real_estate_mstiehl.estate_property_offers</field>
-        <field name="report_file">real_estate_mstiehl.estate_property_offers</field>
-        <field name="print_report_name">'Contract - %s' % (object.contract_ref_code)</field>
+        <field name="report_name">real_estate_mstiehl.estate_listing_offers_report</field>
+        <field name="report_file">real_estate_mstiehl.estate_listing_offers_report</field>
+        <field name="print_report_name">'Offers - %s' % (object.listing_ref_code)</field>
         <field name="paperformat_id" ref="real_estate_mstiehl.estate_paperformat_a4"/>
-        <field name="binding_model_id" ref="model_estate_listing_offer"/>
+        <field name="binding_model_id" ref="model_estate_listing"/>
         <field name="binding_type">report</field>
     </record>
 
-    <template id="estate_property_offers" name="Estate Contract Report">
+    <template id="estate_listing_offers_report" name="Estate Listing Offers Report">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <h2 t-field="o.name"/>
-                                <p class="text-muted mb-0" t-field="o.contract_ref_code"/>
+                                <p class="text-muted mb-0" t-field="o.listing_ref_code"/>
                             </div>
                             <div class="col-6 text-end">
                                 <span class="badge rounded-pill text-bg-secondary" t-field="o.state"/>
@@ -32,50 +32,16 @@
 
                         <div class="row mb-4">
                             <div class="col-4">
-                                <strong>Type</strong>
-                                <p class="mb-0" t-field="o.type_id"/>
-                            </div>
-                            <div class="col-4">
                                 <strong>Property</strong>
                                 <p class="mb-0" t-field="o.property_id"/>
                             </div>
-                            <div class="col-4">
-                                <strong>Listing</strong>
-                                <p class="mb-0" t-field="o.listing_id"/>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
                             <div class="col-4">
                                 <strong>Expected Price</strong>
                                 <p class="mb-0" t-field="o.expected_price"/>
                             </div>
                             <div class="col-4">
-                                <strong>Price</strong>
-                                <p class="mb-0" t-field="o.price"/>
-                            </div>
-                            <div class="col-4" t-if="o.has_security_deposit">
-                                <strong>Security Deposit</strong>
-                                <p class="mb-0" t-field="o.security_deposit"/>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-3">
-                                <strong>Start Date</strong>
-                                <p class="mb-0" t-field="o.date_start"/>
-                            </div>
-                            <div class="col-3">
-                                <strong>End Date</strong>
-                                <p class="mb-0" t-field="o.date_end"/>
-                            </div>
-                            <div class="col-3">
-                                <strong>Duration (Days)</strong>
-                                <p class="mb-0" t-field="o.duration_days"/>
-                            </div>
-                            <div class="col-3">
-                                <strong>Days Left</strong>
-                                <p class="mb-0" t-field="o.days_left"/>
+                                <strong>Selling Price</strong>
+                                <p class="mb-0" t-field="o.selling_price"/>
                             </div>
                         </div>
 
@@ -90,45 +56,36 @@
                             </div>
                         </div>
 
-                        <div class="row mb-4" t-if="o.buyer_ids">
+                        <div class="row mb-4">
                             <div class="col-12">
-                                <strong>Buyers</strong>
-                                <table class="table table-sm mt-2">
+                                <strong>Offers</strong>
+                                <table class="table table-sm table-bordered mt-2">
                                     <thead>
                                         <tr>
                                             <th>Partner</th>
-                                            <th>Share</th>
-                                            <th>Notes</th>
+                                            <th>Offer</th>
+                                            <th>Date</th>
+                                            <th>Valid Until</th>
+                                            <th>Agent</th>
+                                            <th>State</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <t t-foreach="o.buyer_ids" t-as="buyer">
+                                        <t t-foreach="o.offer_ids" t-as="offer">
                                             <tr>
-                                                <td><span t-field="buyer.partner_id"/></td>
-                                                <td><span t-field="buyer.numerator"/>/<span t-field="buyer.denominator"/></td>
-                                                <td><span t-field="buyer.notes"/></td>
+                                                <td><span t-field="offer.partner_id"/></td>
+                                                <td><span t-field="offer.offer_value"/></td>
+                                                <td><span t-field="offer.date"/></td>
+                                                <td><span t-field="offer.valid_until"/></td>
+                                                <td><span t-field="offer.agent_id"/></td>
+                                                <td><span t-field="offer.state"/></td>
                                             </tr>
                                         </t>
+                                        <tr t-if="not o.offer_ids">
+                                            <td colspan="6" class="text-muted">No offers registered.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4" t-if="o.tags_ids">
-                            <div class="col-12">
-                                <strong>Tags</strong>
-                                <p class="mb-0 mt-1">
-                                    <t t-foreach="o.tags_ids" t-as="tag">
-                                        <span class="badge text-bg-secondary me-1" t-field="tag.name"/>
-                                    </t>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4" t-if="o.description">
-                            <div class="col-12">
-                                <strong>Description</strong>
-                                <p class="mb-0" t-field="o.description"/>
                             </div>
                         </div>
                     </div>

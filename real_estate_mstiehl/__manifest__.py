@@ -27,6 +27,7 @@
         "wizard/estate_visit_change_stage.xml",
         "report/estate_property_report.xml",
         "report/estate_contract_report.xml",
+        "report/estate_listing_offers_report.xml",
         "menu/menu.xml"
     ],
     'installable': True,
