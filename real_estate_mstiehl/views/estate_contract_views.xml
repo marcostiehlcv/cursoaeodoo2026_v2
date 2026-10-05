@@ -41,8 +41,11 @@
         <field name="arch" type="xml">
             <form string="Estate Contract">
                 <header>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-secondary"
+                            invisible="state == 'canceled'"
+                            confirm="Are you sure you want to cancel this contract?"/>
                     <field name="state" widget="statusbar" options="{'clickable': '1'}" />
-                </header>  
+                </header>
                 <sheet>
                      <div name="button_box" position="inside">
 

@@ -92,7 +92,12 @@ class EstateContract(models.Model):
                 vals["contract_ref_code"] = val_ref
                 vals.setdefault("name", val_ref)
         return super(EstateContract, self).create(vals_list)
-    
+
+    def action_cancel(self):
+        for record in self:
+            record.state = "canceled"
+            record.date_canceled = fields.Date.today()
+
 class EstateContractType(models.Model):
     _name = "estate.contract.type"
     _description = "Estate Contract Type"

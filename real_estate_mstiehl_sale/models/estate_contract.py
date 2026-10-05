@@ -20,6 +20,13 @@ class EstateContract(models.Model):
         if self.product_id:
             self.price = self.product_id.lst_price
     
+    def action_cancel(self):
+        result = super().action_cancel()
+        orders = self.env["sale.order"].search([("contract_id", "in", self.ids), ("state", "not in", ["done", "cancel"])])
+        for order in orders:
+            order.action_cancel()
+        return result
+
     def action_view_orders(self):
         return {
             "name": _("Sale Orders"),
