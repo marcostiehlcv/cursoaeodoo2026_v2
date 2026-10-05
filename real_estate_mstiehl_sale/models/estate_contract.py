@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class EstateContract(models.Model):
@@ -26,6 +27,30 @@ class EstateContract(models.Model):
         for order in orders:
             order.action_cancel()
         return result
+
+    def action_confirm_and_invoice(self):
+        self.ensure_one()
+        draft_orders = self.env["sale.order"].search([
+            ("contract_id", "=", self.id),
+            ("state", "not in", ["sale", "done", "cancel"]),
+        ])
+        draft_orders.action_confirm()
+        orders_to_invoice = self.env["sale.order"].search([
+            ("contract_id", "=", self.id),
+            ("state", "in", ["sale", "done"]),
+            ("invoice_status", "=", "to invoice"),
+        ])
+        if not orders_to_invoice:
+            raise UserError(_("There is nothing to invoice on this contract's sale orders."))
+        invoices = orders_to_invoice._create_invoices()
+        return {
+            "name": _("Invoices"),
+            "type": "ir.actions.act_window",
+            "res_model": "account.move",
+            "view_mode": "list,form" if len(invoices) > 1 else "form",
+            "res_id": invoices.id if len(invoices) == 1 else False,
+            "domain": [("id", "in", invoices.ids)],
+        }
 
     def action_view_orders(self):
         return {
