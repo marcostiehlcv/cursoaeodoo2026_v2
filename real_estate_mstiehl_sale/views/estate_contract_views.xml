@@ -4,7 +4,7 @@
     <record id="estate_contract_sale_form" model="ir.ui.view">
         <field name="name">estate.contract.sale.form</field>
         <field name="model">estate.contract</field>
-        <field name="inherit_id" ref="real_estate_mstiehl.estate_contract_form"/>
+        <field name="inherit_id" ref="real_estate_mstiehl.view_estate_contract_form"/>
         <field name="arch" type="xml">
             <field name="property_id" position="after">
                 <field name="product_id"/>
