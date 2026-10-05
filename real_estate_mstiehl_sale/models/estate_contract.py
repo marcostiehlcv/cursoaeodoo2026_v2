@@ -35,7 +35,7 @@ class EstateContract(models.Model):
                 
                 order = self.env["sale.order"].create(
                     {
-                        "partner_id": self.partner_id.id,
+                        "partner_id": self.main_buyer_id.id,
                         "contract_id": self.id,
                         "order_line": [
                             (0,0,
