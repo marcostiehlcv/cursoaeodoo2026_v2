@@ -22,7 +22,7 @@ class EstateProperty(models.Model):
     image_1920 = fields.Image("Primary Image", max_width=1920, max_height=1920)
     cunstruction_year = fields.Integer(string="Construction Year", tracking=True)
     
-    seller_id = fields.Many2one(comodel_name="res.partner", string="Seller", tracking=True)
+    seller_id = fields.Many2one(comodel_name="estate.owner", string="Seller", tracking=True)
     agent_id = fields.Many2one(comodel_name="res.users", string="Agent", tracking=True)
     
     google_maps_url = fields.Char(string="Google Maps URL")
@@ -101,7 +101,7 @@ class EstateProperty(models.Model):
                 "selling_price": self.selling_price,
                 "description": self.description,
                 "type_id": self.property_type_id.id,
-                "seller_id": self.seller_id.id,
+                "seller_id": self.seller_id.partner_id.id,
                 "agent_id": self.agent_id.id,
                 "external_url": self.external_url,
                 "date_register": fields.Date.today(),

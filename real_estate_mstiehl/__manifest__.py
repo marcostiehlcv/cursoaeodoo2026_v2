@@ -16,6 +16,7 @@
         "data/estate_cron.xml",
         "data/estate_paperformat.xml",
         "wizard/estate_visit_schedule.xml",
+        "views/estate_owner_views.xml",
         "views/estate_listing_views.xml",
         "views/estate_contract_views.xml",
         "views/estate_contract_type_views.xml",
