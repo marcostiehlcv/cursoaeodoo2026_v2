@@ -61,6 +61,7 @@
                             <field name="listing_id" />
                             <field name="property_id" />
                             <field name="agent_id" />
+                            <field name="main_buyer_id" required="1"/>
                             <field name="type_id" />
                             <field name="price" />
                             <field name="security_deposit" />
