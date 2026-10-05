@@ -41,6 +41,7 @@ class EstateContract(models.Model):
                             (0,0,
                                 {
                                     "product_id": self.product_id.id,
+                                    "name": self.product_id.name,
                                     "product_uom_qty": 1,
                                     "price_unit": self.product_id.lst_price,
                                 },
