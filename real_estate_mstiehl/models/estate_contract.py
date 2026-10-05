@@ -85,10 +85,11 @@ class EstateContract(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        context = self._context
-        val_ref = f"CONT#{(datetime.today()).strftime('%y%m%d%H%M%S')}"  
-        vals_list[0]["contract_ref_code"] = val_ref          
-        vals_list[0]["name"] = val_ref
+        for index, vals in enumerate(vals_list):
+            if not vals.get("contract_ref_code"):
+                val_ref = f"CONT#{(datetime.now()).strftime('%y%m%d%H%M%S%f')}-{index}"
+                vals["contract_ref_code"] = val_ref
+                vals.setdefault("name", val_ref)
         return super(EstateContract, self).create(vals_list)
     
 class EstateContractType(models.Model):

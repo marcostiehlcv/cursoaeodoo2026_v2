@@ -101,10 +101,11 @@ class EstateListing(models.Model):
     
     @api.model_create_multi
     def create(self, vals_list):
-        context = self._context
-        val_ref = f"LIST#{(datetime.today()).strftime('%y%m%d%H%M%S')}"
-        vals_list[0]["listing_ref_code"] = val_ref
-        vals_list[0]["name"] = val_ref
+        for index, vals in enumerate(vals_list):
+            if not vals.get("listing_ref_code"):
+                val_ref = f"LIST#{(datetime.now()).strftime('%y%m%d%H%M%S%f')}-{index}"
+                vals["listing_ref_code"] = val_ref
+                vals.setdefault("name", val_ref)
         return super(EstateListing, self).create(vals_list)
 
     def action_reserved(self):

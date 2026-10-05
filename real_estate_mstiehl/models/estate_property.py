@@ -87,8 +87,9 @@ class EstateProperty(models.Model):
                 
     @api.model_create_multi
     def create(self, vals_list):
-        context = self._context
-        vals_list[0]["property_ref_code"] = f"PROP#{(datetime.today()).strftime('%y%m%d%H%M%S')}"            
+        for index, vals in enumerate(vals_list):
+            if not vals.get("property_ref_code"):
+                vals["property_ref_code"] = f"PROP#{(datetime.now()).strftime('%y%m%d%H%M%S%f')}-{index}"
         return super(EstateProperty, self).create(vals_list)
     
     def action_create_listing(self):

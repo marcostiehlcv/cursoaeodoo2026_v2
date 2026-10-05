@@ -50,9 +50,11 @@ class EstatePropertyTicket(models.Model):
         self.write({"state": "new", "date_new": fields.Datetime.now()})
         
         
+    @api.model_create_multi
     def create(self, vals_list):
-        context = self._context
-        val_ref = f"TICKET#{(datetime.today()).strftime('%y%m%d%H%M%S')}"   
-        vals_list[0]["ticket_ref_code"] = val_ref
-        vals_list[0]["name"] = val_ref     
+        for index, vals in enumerate(vals_list):
+            if not vals.get("ticket_ref_code"):
+                val_ref = f"TICKET#{(datetime.now()).strftime('%y%m%d%H%M%S%f')}-{index}"
+                vals["ticket_ref_code"] = val_ref
+                vals.setdefault("name", val_ref)
         return super(EstatePropertyTicket, self).create(vals_list)
