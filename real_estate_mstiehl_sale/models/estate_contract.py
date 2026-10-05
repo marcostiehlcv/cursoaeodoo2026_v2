@@ -1,4 +1,4 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api, _, 
 
 
 class EstateContract(models.Model):
@@ -7,3 +7,43 @@ class EstateContract(models.Model):
     product_id = fields.Many2one(comodel_name="product.product", string="Product", tracking=True)
    
     order_ids = fields.One2many(comodel_name="sale.order", inverse_name="contract_id", string="Sale Orders") 
+    
+    
+    
+    def action_view_orders(self):
+        return {
+            "name": _("Sale Orders"),
+            "type": "ir.actions.act_window",
+            "res_model": "sale.order",
+            "view_mode": "list,form",
+            "domain": [("contract_id", "=", self.id)],
+            "context": {"default_contract_id": self.id},
+        }
+        
+    def action_create_order(self):
+        for record in self:
+                
+                order = self.env["sale.order"].create(
+                    {
+                        "partner_id": self.partner_id.id,
+                        "contract_id": self.id,
+                        "order_line": [
+                            (0,0,
+                                {
+                                    "product_id": self.product_id.id,
+                                    "product_uom_qty": 1,
+                                    "price_unit": self.product_id.lst_price,
+                                },
+                            )
+                        ],
+                    }
+                )
+                return {
+                    "name": _("Sale Order"),
+                    "type": "ir.actions.act_window",
+                    "res_model": "sale.order",
+                    "view_mode": "form",
+                    "res_id": order.id,
+                }
+                
+            

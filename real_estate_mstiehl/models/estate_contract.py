@@ -87,7 +87,7 @@ class EstateContract(models.Model):
     def create(self, vals_list):
         for index, vals in enumerate(vals_list):
             if not vals.get("contract_ref_code"):
-                val_ref = f"CONT#{(datetime.now()).strftime('%y%m%d%H%M%S%f')}-{index}"
+                val_ref = self.env["ir.sequence"].next_by_code("estate.contract") or "New"
                 vals["contract_ref_code"] = val_ref
                 vals.setdefault("name", val_ref)
         return super(EstateContract, self).create(vals_list)

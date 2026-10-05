@@ -11,6 +11,7 @@
         "security/real_estate_security.xml",
         "security/ir_rules.xml",
         "security/ir.model.access.csv",
+        "data/ir_sequence.xml",
         "data/estate_data.xml",
         "data/estate_cron.xml",
         "data/estate_paperformat.xml",
