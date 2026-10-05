@@ -158,7 +158,7 @@
             <field name="name">Charming 3-Bedroom Apartment in Madrid Centro</field>
             <field name="description">Bright and elegant apartment on the 3rd floor of a historic building, fully renovated, close to shops and metro.</field>
             <field name="cunstruction_year">1890</field>
-            <field name="seller_id" ref="demo_owner_marc"/>
+            <field name="owner_id" ref="demo_owner_marc"/>
             <field name="agent_id" ref="base.user_admin"/>
             <field name="street">Calle Mayor 12</field>
             <field name="city">Madrid</field>
@@ -200,7 +200,7 @@
             <field name="name">Modern 4-Bedroom House with Garden in Barcelona</field>
             <field name="description">Detached house with private garden and garage, built in a quiet residential area close to the city center.</field>
             <field name="cunstruction_year">2015</field>
-            <field name="seller_id" ref="demo_owner_laura"/>
+            <field name="owner_id" ref="demo_owner_laura"/>
             <field name="agent_id" ref="base.user_admin"/>
             <field name="street">Passeig de Gracia 45</field>
             <field name="city">Barcelona</field>
@@ -237,7 +237,7 @@
             <field name="name">Luxury Villa with Pool near Valencia</field>
             <field name="description">Stunning villa with private pool, terrace and panoramic views over the countryside.</field>
             <field name="cunstruction_year">2005</field>
-            <field name="seller_id" ref="demo_owner_antonio"/>
+            <field name="owner_id" ref="demo_owner_antonio"/>
             <field name="agent_id" ref="base.user_admin"/>
             <field name="street">Calle de la Paz 10</field>
             <field name="city">Valencia</field>
@@ -268,7 +268,7 @@
             <field name="name">Cozy Studio in Downtown Sevilla</field>
             <field name="description">Compact and well-located studio apartment, perfect as a rental investment or first home.</field>
             <field name="cunstruction_year">1960</field>
-            <field name="seller_id" ref="demo_owner_marc"/>
+            <field name="owner_id" ref="demo_owner_marc"/>
             <field name="agent_id" ref="base.user_admin"/>
             <field name="street">Calle Sierpes 8</field>
             <field name="city">Sevilla</field>
@@ -297,7 +297,7 @@
             <field name="name">Industrial Loft in Bilbao</field>
             <field name="description">Open-plan loft with high ceilings and large windows, located in a converted factory building.</field>
             <field name="cunstruction_year">1925</field>
-            <field name="seller_id" ref="demo_owner_laura"/>
+            <field name="owner_id" ref="demo_owner_laura"/>
             <field name="agent_id" ref="base.user_admin"/>
             <field name="street">Gran Via 28</field>
             <field name="city">Bilbao</field>

@@ -78,8 +78,8 @@
 
                         <div class="row mb-4">
                             <div class="col-6">
-                                <strong>Seller</strong>
-                                <p class="mb-0" t-field="o.seller_id"/>
+                                <strong>Owner</strong>
+                                <p class="mb-0" t-field="o.owner_id"/>
                             </div>
                             <div class="col-6">
                                 <strong>Agent</strong>

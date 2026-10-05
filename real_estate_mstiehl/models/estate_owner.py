@@ -16,7 +16,7 @@ class EstateOwner(models.Model):
     notes = fields.Text(string="Owner Notes")
     property_ids = fields.One2many(
         comodel_name="estate.property",
-        inverse_name="seller_id",
+        inverse_name="owner_id",
         string="Properties",
     )
     property_count = fields.Integer(string="Number of Properties", compute="_compute_property_count")
@@ -33,6 +33,6 @@ class EstateOwner(models.Model):
             "type": "ir.actions.act_window",
             "res_model": "estate.property",
             "view_mode": "list,form",
-            "domain": [("seller_id", "=", self.id)],
-            "context": {"default_seller_id": self.id},
+            "domain": [("owner_id", "=", self.id)],
+            "context": {"default_owner_id": self.id},
         }
