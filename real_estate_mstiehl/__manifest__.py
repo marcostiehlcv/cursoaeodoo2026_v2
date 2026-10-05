@@ -30,6 +30,9 @@
         "report/estate_listing_offers_report.xml",
         "menu/menu.xml"
     ],
+    "demo": [
+        "demo/estate_demo.xml"
+    ],
     'installable': True,
     'application': True,
     'auto_install': False,
