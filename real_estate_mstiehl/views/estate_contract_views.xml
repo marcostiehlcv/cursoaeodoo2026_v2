@@ -44,6 +44,9 @@
                     <field name="state" widget="statusbar" options="{'clickable': '1'}" />
                 </header>  
                 <sheet>
+                     <div name="button_box" position="inside">
+
+                    </div>
                     <widget name="web_ribbon"
                         title="Signed" 
                         bg_color="text-bg-success" 

@@ -8,7 +8,17 @@ class EstateContract(models.Model):
    
     order_ids = fields.One2many(comodel_name="sale.order", inverse_name="contract_id", string="Sale Orders") 
     
+    num_orders = fields.Integer(string="Number of Orders", compute="_compute_num_orders")
     
+    @api.depends("order_ids")
+    def _compute_num_orders(self):
+        for record in self:
+            record.num_orders = len(record.order_ids)
+    
+    @api.onchange("product_id")
+    def _onchange_product_id(self):
+        if self.product_id:
+            self.price = self.product_id.lst_price
     
     def action_view_orders(self):
         return {
