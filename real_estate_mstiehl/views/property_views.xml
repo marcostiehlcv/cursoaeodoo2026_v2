@@ -157,6 +157,7 @@
             <field name="arch" type="xml">
                 <search string="Search Properties">
                     <field name="name"/>
+                    <field name="available"/>
                 </search>
             </field>
         </record>
