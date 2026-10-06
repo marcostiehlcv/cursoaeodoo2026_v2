@@ -156,25 +156,7 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <search string="Search Properties">
-                    <field name="name" string="Property" filter_domain="['|', '|', ('name', 'ilike', self), ('property_ref_code', 'ilike', self), ('city', 'ilike', self)]"/>
-                    <field name="property_ref_code"/>
-                    <field name="city"/>
-                    <field name="property_type_id"/>
-                    <field name="owner_id"/>
-                    <field name="agent_id"/>
-                    <field name="tags_ids"/>
-                    <filter name="available" string="Available" domain="[('available', '=', True)]"/>
-                    <filter name="sold" string="Sold" domain="[('date_sold', '!=', False)]"/>
-                    <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
-                    <separator/>
-                    <filter name="my_properties" string="My Properties" domain="[('agent_id', '=', uid)]"/>
-                    <group expand="0" string="Group By">
-                        <filter name="group_by_property_type" string="Property Type" context="{'group_by': 'property_type_id'}"/>
-                        <filter name="group_by_owner" string="Owner" context="{'group_by': 'owner_id'}"/>
-                        <filter name="group_by_agent" string="Agent" context="{'group_by': 'agent_id'}"/>
-                        <filter name="group_by_city" string="City" context="{'group_by': 'city'}"/>
-                        <filter name="group_by_date_register" string="Date Register" context="{'group_by': 'date_register'}"/>
-                    </group>
+                    <field name="name"/>
                 </search>
             </field>
         </record>
