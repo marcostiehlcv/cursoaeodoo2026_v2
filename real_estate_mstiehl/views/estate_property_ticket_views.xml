@@ -35,6 +35,7 @@
                             <field name="description" />
                         </group>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>

@@ -8,6 +8,7 @@ class EstatePropertyTicket(models.Model):
     _description = "Property Ticket"
     _order = "create_date desc"
     _rec_name = "name"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char(string="Name", required=True, tracking=True, default="New")
     sequence = fields.Integer(string="Sequence", default=1)

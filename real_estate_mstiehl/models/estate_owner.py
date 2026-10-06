@@ -17,7 +17,7 @@ class EstateOwner(models.Model):
     property_ids = fields.One2many(
         comodel_name="estate.property",
         inverse_name="owner_id",
-        string="Properties",
+        string="Real Estate Properties",
     )
     property_count = fields.Integer(string="Number of Properties", compute="_compute_property_count")
 
