@@ -74,4 +74,5 @@ class TestEstateProperty(common.TransactionCase):
 
     def test_compute_next_visit_date(self):
         self.assertEqual(self.listing_1.next_visit_date, self.visit_2.date)
+        self.assertTtrue(self.listing_1.next_visit_date > fields.Datetime.now())
         
