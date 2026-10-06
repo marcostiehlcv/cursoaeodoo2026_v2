@@ -64,7 +64,9 @@ class EstateContract(models.Model):
         
     def action_create_order(self):
         for record in self:
-                
+                if not record.product_id:
+                    raise UserError(_("Please select a Product on the contract before creating a Sale Order."))
+
                 order = self.env["sale.order"].create(
                     {
                         "partner_id": self.main_buyer_id.id,

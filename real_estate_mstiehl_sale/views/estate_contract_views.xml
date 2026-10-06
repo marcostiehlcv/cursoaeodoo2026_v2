@@ -16,7 +16,7 @@
                 </button>
             </div>
             <field name="property_id" position="after">
-                <field name="product_id"/>
+                <field name="product_id" required="state == 'signed'"/>
             </field>
         </field>
     </record>
