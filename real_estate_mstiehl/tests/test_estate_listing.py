@@ -91,8 +91,10 @@ class TestEstateProperty(common.TransactionCase):
         """The next visit date is the closest *confirmed* future visit, even when a
         later confirmed visit (visit_4) also exists."""
         self.assertEqual(self.visit_2.stage_id.code, 'confirmed')
-        self.assertEqual(self.visit_4.stage_id.code, 'confirmedddd')
+        self.assertEqual(self.visit_4.stage_id.code, 'confirmed')
         self.assertTrue(self.visit_2.date < self.visit_4.date)
+        # force error
+        self.assertFalse(self.visit_2.date < self.visit_4.date)
 
         self.assertEqual(self.listing_1.next_visit_date, self.visit_2.date)
         self.assertTrue(self.listing_1.next_visit_date > fields.Datetime.now())
