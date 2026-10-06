@@ -110,6 +110,7 @@ class EstateProperty(models.Model):
             })
         except Exception as error:
             raise UserError(_("The listing could not be created: %s", error)) from error
+        self.message_post("A listing has been created for this property.")
         return {
             "type": "ir.actions.client",
             "tag": "display_notification",
