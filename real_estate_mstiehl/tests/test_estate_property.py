@@ -20,7 +20,9 @@ class TestEstateProperty(common.TransactionCase):
             'selling_price': 120000,
             'available': True,
             'agent_id': self.env.user.id,
-            'owner_id': self.estate_owner.create({'name': 'John Doe'}).id,
+            'owner_id': self.estate_owner.create({
+                'partner_id': self.env.user.partner_id.id,
+            }).id,
             'date_register': '2026-01-01',
         })
 
@@ -31,7 +33,9 @@ class TestEstateProperty(common.TransactionCase):
             'selling_price': 120000,
             'available': True,
             'agent_id': self.env.user.id,
-            'owner_id': self.estate_owner.create({'name': 'John Doe'}).id,
+            'owner_id': self.estate_owner.create({
+                'partner_id': self.env.ref('base.partner_root').id,
+            }).id,
             'date_register': '2027-01-01',
         })
 

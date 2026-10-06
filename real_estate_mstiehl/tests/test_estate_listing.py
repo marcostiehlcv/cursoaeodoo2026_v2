@@ -38,7 +38,9 @@ class TestEstateProperty(common.TransactionCase):
             'selling_price': 120000,
             'available': True,
             'agent_id': self.env.user.id,
-            'owner_id': self.estate_owner.create({'name': 'John Doe'}).id,
+            'owner_id': self.estate_owner.create({
+                'partner_id': self.env.user.partner_id.id,
+            }).id,
         })
 
         self.listing_1 = self.estate_listing.create({
@@ -74,5 +76,5 @@ class TestEstateProperty(common.TransactionCase):
 
     def test_compute_next_visit_date(self):
         self.assertEqual(self.listing_1.next_visit_date, self.visit_2.date)
-        self.assertTtrue(self.listing_1.next_visit_date > fields.Datetime.now())
+        self.assertTrue(self.listing_1.next_visit_date > fields.Datetime.now())
         
