@@ -10,9 +10,15 @@ class TestEstateProperty(common.TransactionCase):
         self.estate_listing = self.env['estate.listing']
         self.estate_property_visit = self.env['estate.property.visit']
         self.estate_property_type = self.env['estate.property.type']
+        self.estate_contract_type = self.env['estate.contract.type']
         self.estate_owner = self.env['estate.owner']
         self.estate_stage = self.env['estate.stage']
         self.estate_stage_type = self.env['estate.stage.type']
+
+        self.contract_type_sale = self.estate_contract_type.create({
+            'name': 'Sale',
+            'code': 'sale',
+        })
 
         self.stage_type_visit = self.estate_stage_type.create({
             'name': 'Visit',
@@ -48,7 +54,7 @@ class TestEstateProperty(common.TransactionCase):
             'expected_price': self.property_1.expected_price,
             'selling_price': self.property_1.selling_price,
             'description': self.property_1.description,
-            'type_id': self.property_1.property_type_id.id,
+            'type_id': self.contract_type_sale.id,
             'seller_id': self.property_1.owner_id.partner_id.id,
             'agent_id': self.property_1.agent_id.id,
         })
