@@ -79,8 +79,19 @@ class TestEstateProperty(common.TransactionCase):
             'date': fields.Datetime.now() + timedelta(days=2),
             'stage_id': self.stage_draft.id,
         })
+        
+        self.visit_4 = self.estate_property_visit.create({
+            'property_id': self.property_1.id,
+            'listing_id': self.listing_1.id,
+            'date': fields.Datetime.now() + timedelta(days=5),
+            'stage_id': self.stage_confirmed.id,
+        })
 
     def test_compute_next_visit_date(self):
+        """The next visit date is the closest *confirmed* future visit."""
         self.assertEqual(self.listing_1.next_visit_date, self.visit_2.date)
         self.assertTrue(self.listing_1.next_visit_date > fields.Datetime.now())
-        
+        self.assertTrue(self.visit_2.stage_id.code, 'confirmed')
+        self.assertTrue(self.visit_4.stage_id.code, 'confirmed')
+        self.assertTrue(self.visit_2.date < self.visit_4.date)
+
