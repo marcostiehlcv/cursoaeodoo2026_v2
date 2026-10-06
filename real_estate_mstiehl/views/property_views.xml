@@ -145,6 +145,7 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>
@@ -167,8 +168,6 @@
                     <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
                     <separator/>
                     <filter name="my_properties" string="My Properties" domain="[('agent_id', '=', uid)]"/>
-                    <separator/>
-                    <filter name="filter_date_register" string="Date Register" date="date_register"/>
                     <group expand="0" string="Group By">
                         <filter name="group_by_property_type" string="Property Type" context="{'group_by': 'property_type_id'}"/>
                         <filter name="group_by_owner" string="Owner" context="{'group_by': 'owner_id'}"/>
