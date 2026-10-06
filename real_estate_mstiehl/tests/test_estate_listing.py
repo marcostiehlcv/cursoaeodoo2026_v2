@@ -92,6 +92,6 @@ class TestEstateProperty(common.TransactionCase):
         self.assertEqual(self.listing_1.next_visit_date, self.visit_2.date)
         self.assertTrue(self.listing_1.next_visit_date > fields.Datetime.now())
         self.assertTrue(self.visit_2.stage_id.code, 'confirmed')
-        self.assertTrue(self.visit_4.stage_id.code, 'confirmed')
+        self.assertTrue(self.visit_4.stage_id.code, 'confirmedd')
         self.assertTrue(self.visit_2.date < self.visit_4.date)
 
