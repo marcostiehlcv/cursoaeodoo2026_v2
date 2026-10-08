@@ -9,6 +9,7 @@
     'depends': ['real_estate_mstiehl', 'sale'],
     "data": [
         "views/sale_order_views.xml",
+        "views/product_template_views.xml",
         "views/estate_contract_views.xml",
         
     ],
