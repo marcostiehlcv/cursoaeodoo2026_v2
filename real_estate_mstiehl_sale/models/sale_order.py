@@ -20,7 +20,7 @@ class SaleOrder(models.Model):
                 print(f"Creating contract for sale order {order.name} with rental line {rental_line.product_id.name}...")
                 new_contract = self.env["estate.contract"].create({
                     "product_id": rental_line.product_id.id,
-                    "price": order.amount_total,
+                    "price": rental_line.price_unit,
                     "main_buyer_id": order.partner_id.id,
                 })
                 order.write({"contract_id": new_contract.id})
