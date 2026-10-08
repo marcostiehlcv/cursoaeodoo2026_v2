@@ -1,1 +1,1 @@
-from . import estate_contract, sale_order
+from . import estate_contract, sale_order, product_template
